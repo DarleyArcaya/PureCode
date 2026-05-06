@@ -5,4 +5,4 @@ app = FastAPI()
 
 @app.get('/scan')
 def scan_file():
- 
+
