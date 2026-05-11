@@ -13,6 +13,3 @@ def return_scan():
 
     result = scanner.scan_file()
     return 'success', result
-
-
-
