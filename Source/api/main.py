@@ -1,6 +1,6 @@
 import os
 from fastapi import FastAPI
-from core import scanner
+from Source.api.core import gradle_caches
 
 app = FastAPI()
 
@@ -9,7 +9,7 @@ def main_function():
     return "PureCode app is running its api"
 
 @app.get('/scan')
-def return_scan():
+def return_removing():
 
-    result = scanner.scan_file()
-    return 'success', result
+    result = gradle_caches.removing('~/.gradle/caches/')
+    return 'cache removed', result
