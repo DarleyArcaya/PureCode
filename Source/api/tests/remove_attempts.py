@@ -1,18 +1,15 @@
 import os
+import shutil
 
+def removing(cache_path):
+    full_path_cache = os.path.expanduser(cache_path)
 
-def removing(file_path):
-    try:
-        if os.path.exists(file_path):
-            os.rmdir(file_path)
-            print(f'{file_path} has been removed successfully')
-        else:
-            print('file does not exist')
-    except PermissionError:
-        print("Permission denied")
-    except Exception as e:
-        print(e)
-        
+    if os.path.exists(full_path_cache):
+        shutil.rmtree(full_path_cache)
+        print('cache removed')
+    else:
+        print('no cache to remove')
+
 removing('~/.gradle/caches/')
 
 
