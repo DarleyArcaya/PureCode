@@ -1,6 +1,6 @@
 # PureCode 🧹
 
-**PureCode** is an optimization tool designed by developers, for developers. It focuses on "surgical cleaning" for development environments, removing unnecessary files that generic cleaners usually ignore.
+**PureCode** is an optimization tool designed by a developer, for developers. It focuses on "surgical cleaning" for development environments, removing unnecessary files that generic cleaners usually ignore.
 
 ---
 
