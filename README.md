@@ -19,7 +19,7 @@ Unlike other cleaning tools, **PureCode** is built with a **modular philosophy**
 
 *   **Backend**: [FastAPI](https://fastapi.tiangolo.com/) (Python 3.x)
 *   **Frontend**: [Flutter](https://flutter.dev/) (Dart)
-*   **Engine**: Python `os` and `shutil` libraries for safe file system manipulation.
+*   **Engine**: Python `os`, `stat` and `shutil` libraries for safe file system manipulation.
 
 ---
 
