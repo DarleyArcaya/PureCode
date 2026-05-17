@@ -11,6 +11,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,13 +23,19 @@ class _HomepageState extends State<Homepage> {
                 height: 400,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.blueGrey[50],
+                  color: Colors.grey[850],
                   ),
-                  child: const Center(
-                    child: Text('PureCode'),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Android Caches'),
+                      Text('Flutter Caches'),
+                      Text('Gradle Caches'),
+                      Text('PiP Caches')
+                      ],
+                  ),
                   ),
                 ),
-              ),
           ],
         ),
       ),
