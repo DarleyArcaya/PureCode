@@ -111,10 +111,19 @@ class _HomepageState extends State<Homepage> {
         color: const Color(0xFFE2E8F0),
         child: Padding(
           padding: EdgeInsets.all(8.0),
-          child: const Center(
-            child: Text('Made by Darley Silot Arcaya'),
-          ),
-        )
+          child: Row(
+            children: <Widget>[
+              Text('Copyright © 2026 by Darley Silot Arcaya'),
+              SizedBox(width: 385),
+              ElevatedButton(onPressed: () {
+                print('Cleaned');
+              },
+              child: Text('Clean')
+              )
+            ],
+          )
+        ),
+        
       )
     );
   } 
