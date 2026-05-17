@@ -53,7 +53,7 @@ class _HomepageState extends State<Homepage> {
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('What caches will be automaticly cleaned',
+                      Text('👇 Caches that will be removed are 👇',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold
@@ -66,7 +66,7 @@ class _HomepageState extends State<Homepage> {
                         readOnly: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'flutter caches'
+                          hintText: 'Flutter Caches: [WIN - LOCALAPPDATA/pub/cache] | [MacOs - ~/.pub-cache]'
                         ),
                       ),
 
@@ -76,7 +76,7 @@ class _HomepageState extends State<Homepage> {
                         readOnly: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'Android Caches'
+                          hintText: 'Android Caches: ~/.android/cache'
                         ),
                       ),
 
@@ -86,7 +86,7 @@ class _HomepageState extends State<Homepage> {
                         readOnly: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'Gradle Caches'
+                          hintText: 'Gradle Caches: ~/.gradle/caches/'
                         ),  
                       ),
 
@@ -96,7 +96,7 @@ class _HomepageState extends State<Homepage> {
                         readOnly: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'PIP Caches'
+                          hintText: 'PIP Caches: [WIN - LOCALAPPDATA/pip/cache] | [MacOs - ~/Library/Caches/pip]'
                         ),
                       )
 
