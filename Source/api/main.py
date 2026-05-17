@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from core import gradle_caches, android_caches, flutter_caches
+from core import gradle_caches, android_caches, flutter_caches, pip_caches
 
 app = FastAPI()
 
@@ -21,3 +21,8 @@ def return_android_caches():
 def return_flutter_caches():
     result = flutter_caches.clear_flutter_cache() # Cleans packages from pub.dev to save GBs, independent of Flutter version
     return 'Function is working correctly [remove flutter caches]', result
+
+@app.get('/pip_caches')
+def return_pip_caches():
+    result = pip_caches.clear_pip_caches()
+    return 'Function is working correctly [remove pip caches]', result
