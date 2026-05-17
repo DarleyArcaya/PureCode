@@ -35,7 +35,7 @@ class _HomepageState extends State<Homepage> {
                   color: const Color(0xFFFFFFFF),
               
                 ),
-                child: Text('Here, you will read what the program does'),
+                child: Text('PureCode is an optimization tool designed by a developer, for developers. It focuses on "surgical cleaning" for development environments, removing unnecessary files that generic cleaners usually ignore. Caches removed here are: Gradle Build Caches, Android Studio Cache, PIP Python Caches and Flutter Caches. There will be more caches added in the future. YOU ARE USING THIS APP UNDER YOUR OWN RESPONSABILITY. If you are not a developer, please do not'),
                 
               ),
 
