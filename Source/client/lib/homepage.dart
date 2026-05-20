@@ -115,7 +115,7 @@ class _HomepageState extends State<Homepage> {
           child: Row(
             children: <Widget>[
               Text('Copyright © 2026 by Darley Silot Arcaya'),
-              SizedBox(width: 385),
+              Spacer(),
               ElevatedButton(
                 onPressed: () async { 
                   // Avoid the "async gaps" error by ensuring the screen remains active                  if (!context.mounted) return;
