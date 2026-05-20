@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'api_services.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -115,10 +116,25 @@ class _HomepageState extends State<Homepage> {
             children: <Widget>[
               Text('Copyright © 2026 by Darley Silot Arcaya'),
               SizedBox(width: 385),
-              ElevatedButton(onPressed: () {
-                print('Cleaned');
-              },
-              child: Text('Clean')
+              ElevatedButton(
+                onPressed: () async { 
+                  // Avoid the "async gaps" error by ensuring the screen remains active                  if (!context.mounted) return;
+                  bool result = await ApiServices.runAllCleaners();
+                  
+                  // Avoid the "async gaps" error by ensuring the screen remains active
+                  if (!context.mounted) return;
+
+                  if (result) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('All cleaners ran successfully!')),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Failed to run cleaners. Please try again.')),
+                    );
+                  }
+                }, 
+                child: const Text('Clean'),
               )
             ],
           )
