@@ -23,8 +23,9 @@ class _HomepageState extends State<Homepage> {
         backgroundColor: const Color(0xFF0F172A),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        
+        child: ListView(
+
           children: [
             Padding(
               padding: EdgeInsets.all(20.0),
