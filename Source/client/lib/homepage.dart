@@ -126,11 +126,11 @@ class _HomepageState extends State<Homepage> {
 
                   if (result) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('All cleaners ran successfully!')),
+                      const SnackBar(content: Text('Cache cleaned successfully!')),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Failed to run cleaners. Please try again.')),
+                      const SnackBar(content: Text('Cache are already clean or something went wrong.')),
                     );
                   }
                 }, 
