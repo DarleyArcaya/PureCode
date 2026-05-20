@@ -24,7 +24,7 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Center(
         
-        child: ListView(
+        child: Column(
 
           children: [
             Padding(
@@ -52,8 +52,8 @@ class _HomepageState extends State<Homepage> {
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color(0xFFFFFFFF),
                   ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: ListView(
+                    //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('👇 Caches that will be removed are 👇',
                       style: TextStyle(
