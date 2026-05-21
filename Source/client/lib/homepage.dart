@@ -55,12 +55,6 @@ class _HomepageState extends State<Homepage> {
                   child: ListView(
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('👇 Caches that will be removed are 👇',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
-                      )
-                      ),
                       
                       SizedBox(height: 20),
                       
