@@ -30,6 +30,10 @@ void main() async {  // 'async' allows us to use 'await' inside this function
     // Title bar style (normal = standard Windows bar)
     titleBarStyle: TitleBarStyle.normal,
     
+    // Window Title (appears in title bar and taskbar)
+    title: 'PureCode'
+
+    
     // OTHER OPTIONS YOU CAN ADD:
     // minimumSize: const Size(400, 300),  // Minimum size (can't make smaller)
     // maximumSize: const Size(1920, 1080), // Maximum size (can't make bigger)
