@@ -33,6 +33,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
     // Window Title (appears in title bar and taskbar)
     title: 'PureCode',
 
+    maximumSize: const Size(900, 900),
     minimumSize: const Size(900, 900),
     // OTHER OPTIONS YOU CAN ADD:
     // minimumSize: const Size(400, 300),  // Minimum size (can't make smaller)
