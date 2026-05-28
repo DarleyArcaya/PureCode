@@ -9,6 +9,12 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+
+  bool gradleCaches = false;
+  bool androidCaches = false;
+  bool flutterCaches = false;
+  bool pipCaches = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +53,7 @@ class _HomepageState extends State<Homepage> {
               padding: EdgeInsets.all(20.0),
               child: Container(
                 width: 800,
-                height: 320,
+                height: 360,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color.fromARGB(255, 233, 233, 233),
@@ -58,42 +64,55 @@ class _HomepageState extends State<Homepage> {
                       
                       SizedBox(height: 20),
                       
-                      TextField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Flutter Caches: [WIN - LOCALAPPDATA/pub/cache] | [MacOs - ~/.pub-cache]'
-                        ),
+
+                      CheckboxListTile(
+                        title: Text('Gradle Caches'),
+                        subtitle: Text('Removes .gradle build artifacts'),
+                        value: gradleCaches,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            gradleCaches = value ?? false;
+                          });
+                        }
                       ),
 
                       SizedBox(height: 20),
 
-                      TextField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Android Caches: ~/.android/cache'
-                        ),
+                      CheckboxListTile(
+                        title: Text('Android Studio Caches'),
+                        subtitle: Text('Removes Android Studio Caches files'),
+                        value: androidCaches,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            androidCaches = value ?? false;
+                          });
+                        }
                       ),
 
                       SizedBox(height: 20),
 
-                      TextField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Gradle Caches: ~/.gradle/caches/'
-                        ),  
+                      CheckboxListTile(
+                        title: Text('Flutter Caches'),
+                        subtitle: Text('Removes Flutter Caches files'),
+                        value: flutterCaches,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            flutterCaches = value ?? false;
+                          });
+                        }
                       ),
 
                       SizedBox(height: 20),
 
-                      TextField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'PIP Caches: [WIN - LOCALAPPDATA/pip/cache] | [MacOs - ~/Library/Caches/pip]'
-                        ),
+                      CheckboxListTile(
+                        title: Text('Pip Python Caches'),
+                        subtitle: Text('Removes Pip Python Caches files'),
+                        value: pipCaches,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            pipCaches = value ?? false;
+                          });
+                        }
                       )
 
                       ],
