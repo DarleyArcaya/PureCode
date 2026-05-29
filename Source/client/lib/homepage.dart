@@ -133,21 +133,40 @@ class _HomepageState extends State<Homepage> {
               Spacer(),
               ElevatedButton(
                 onPressed: () async { 
-                  // Avoid the "async gaps" error by ensuring the screen remains active                  if (!context.mounted) return;
-                  bool result = await ApiServices.runAllCleaners();
                   
+                  if (!gradleCaches && !androidCaches && !flutterCaches && !pipCaches) {
+                    return;
+                  }
+
+                  bool success = true;
+                  
+                  if (gradleCaches) {
+                    await ApiServices.removeGradleCaches();
+                    if (!gradleCaches) success = false;
+                  }
+                  if (androidCaches) {
+                    await ApiServices.removeAndroidCaches();
+                    if (!androidCaches) success = false;
+                  }
+                  if (flutterCaches) {
+                    await ApiServices.removeFlutterCaches();
+                    if (!flutterCaches) success = false;
+                  }
+                  if (pipCaches) {
+                    await ApiServices.removePipPythonCaches();
+                    if (!pipCaches) success = false;
+                  }
+
                   // Avoid the "async gaps" error by ensuring the screen remains active
                   if (!context.mounted) return;
 
-                  if (result) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Cache cleaned successfully!')),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Cache are already clean or something went wrong.')),
-                    );
-                  }
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(success
+                      ? 'Selected caches cleaned successfully!'
+                      : 'An error ocurred while cleaning caches. Please try again.')
+                    )
+                  );
                 }, 
                 child: const Text('Clean'),
               )
