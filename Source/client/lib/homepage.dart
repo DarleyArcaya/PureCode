@@ -10,6 +10,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
+  // State variables to track which caches are selected for cleaning
   bool gradleCaches = false;
   bool androidCaches = false;
   bool flutterCaches = false;
