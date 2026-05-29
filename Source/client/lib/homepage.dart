@@ -164,10 +164,15 @@ class _HomepageState extends State<Homepage> {
                     SnackBar(
                       content: Text(success
                       ? 'Selected caches cleaned successfully!'
-                      : 'An error ocurred while cleaning caches. Please try again.')
+                      : 'An error ocurred while cleaning caches. Please try again.'),
+                      backgroundColor: success ? Colors.green : Colors.red,
                     )
                   );
-                }, 
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white
+                ), 
                 child: const Text('Clean'),
               )
             ],
