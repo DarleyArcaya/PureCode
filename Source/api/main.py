@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from core import gradle_caches, android_caches, flutter_caches, pip_caches
+import uvicorn
+import sys
 
 app = FastAPI()
 
@@ -42,3 +44,32 @@ def return_flutter_caches():
 def return_pip_caches():
     result = pip_caches.clear_pip_caches()
     return 'Function is working correctly [remove pip caches]', result
+
+# Define a custom logging configuration to disable uvicorn's default logging
+# We created an empty log configuration to trick Uvicorn
+LOGGING_CONFIG = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {},
+    "handlers": {},
+    "loggers": {}
+}
+
+if __name__ == "__main__":
+    # 1. PRIMERO: Si está empaquetado, arreglamos las rutas y registramos el módulo 'main'
+    if getattr(sys, 'frozen', False):
+        sys.path.append(sys._MEIPASS)
+        # Importamos de forma dinámica el archivo actual y lo registramos en el sistema de módulos
+        import main
+        sys.modules['main'] = main
+
+    # 2. SEGUNDO: Ahora que las rutas están perfectas, encendemos el servidor de Uvicorn
+    # run the FastAPI app using uvicorn in a local way
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=False, log_config=LOGGING_CONFIG) 
+    
+    # To create an executable file using PyInstaller, you can use the following command in your terminal:
+    # pyinstaller --onedir --noconsole --collect-all pydantic_core main.py
+    # --onedir: Creates a single folder containing the executable and all dependencies.
+    # --noconsole: Hides the console window when running the executable (useful).
+    # --collect-all pydantic_core: Ensures that all necessary files from the pydantic_core package are included in the build, 
+    # which is crucial for the FastAPI application to function correctly.
