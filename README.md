@@ -43,7 +43,7 @@ Unlike generic system cleaners, **PureCode** is built with a **modular philosoph
 
 ## 🔮 Upcoming Features
 
-> 🚀 **Roadmap Update:** A standalone **Windows Executable (`.exe`)** version is currently under development. This will allow users to launch PureCode as a lightweight desktop application with a single click—no Python, Flutter, or terminal setups required.
+> 🚀 **Roadmap Update:** A standalone **Windows Executable (`.exe`)** and **MacOS Executable (`.app`)** version is currently under development. This will allow users to launch PureCode as a lightweight desktop application with a single click—no Python, Flutter, or terminal setups required.
 
 ---
 
