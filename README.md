@@ -23,13 +23,16 @@
 
 ## 💡 Why PureCode?
 
-Unlike generic system cleaners, **PureCode** is built with a **modular philosophy**. It target-cleans complex development environments without touching your personal files, ensuring safely optimized workstations.
+You know the drill: Gradle caches ballooning to 8GB, three Android SDK versions you haven't touched in months, Flutter artifacts from projects you barely remember. Every developer hits this wall eventually.
+
+Yes, you could write a bash script. But **PureCode** gives you modularity, a visual interface, graceful error handling per tool, and a single entrypoint that scales as your stack grows.
+
+Unlike generic system cleaners, **PureCode** is built by developers, for developers — it target-cleans complex development environments without touching your personal files, ensuring a safely optimized workstation every time.
 
 ### ⚡ Advantages of Modular Architecture
-* 🎛️ **Total Control:** Each independent cleaning process (Gradle, Android Studio, PIP) lives in its own isolated module.
+* 🎛️ **Total Control:** Each cleaning process (Gradle, Android Studio, PIP) lives in its own isolated module — run one or run all, you decide.
 * 🚀 **Scalability:** Adding support for a new dev tool is as simple as dropping a new file inside the `core/` folder.
-* 🛡️ **Fail-Safe Design:** If an IDE or process locks a specific folder, only that module skips gracefully, allowing the rest of the ecosystem to finish the job.
-
+* 🛡️ **Fail-Safe Design:** If an IDE or process locks a specific folder, only that module skips gracefully — the rest of the cleanup finishes without interruption.
 ---
 
 ## 🛠️ Tech Stack
