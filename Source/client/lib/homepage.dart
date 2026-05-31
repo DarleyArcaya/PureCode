@@ -135,6 +135,12 @@ class _HomepageState extends State<Homepage> {
                 onPressed: () async { 
                   
                   if (!gradleCaches && !androidCaches && !flutterCaches && !pipCaches) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please select at least one cache to clean.'),
+                        backgroundColor: Colors.orange,
+                      )
+                    );
                     return;
                   }
 
