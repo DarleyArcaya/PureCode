@@ -4,6 +4,9 @@
 **/.venv/
 .vscode/
 
+# Developers
+Release/
+
 # Flutter/Dart
 build/
 .dart_tool/
