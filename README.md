@@ -13,6 +13,17 @@
 
 ---
 
+## 📥 Downloads (Beta)
+
+You can now try **PureCode** without needing to set up development environments!
+
+| Platform | Status | Download Link |
+| :--- | :--- | :--- |
+| **Windows** | ✅ Stable Beta | [**Download .exe Installer**](https://github.com/DarleyArcaya/PureCode/releases/download/v0.5.0-beta/PureCode_V_0.5.0_Setup.exe) |
+| **macOS** | 🏗️ In Progress | *Coming soon* |
+
+---
+
 ## 🔍 Preview
 
 <p align="center">
@@ -33,6 +44,7 @@ Unlike generic system cleaners, **PureCode** is built by developers, for develop
 * 🎛️ **Total Control:** Each cleaning process (Gradle, Android Studio, PIP) lives in its own isolated module — run one or run all, you decide.
 * 🚀 **Scalability:** Adding support for a new dev tool is as simple as dropping a new file inside the `core/` folder.
 * 🛡️ **Fail-Safe Design:** If an IDE or process locks a specific folder, only that module skips gracefully — the rest of the cleanup finishes without interruption.
+
 ---
 
 ## 🛠️ Tech Stack
@@ -46,7 +58,7 @@ Unlike generic system cleaners, **PureCode** is built by developers, for develop
 
 ## 🔮 Upcoming Features
 
-> 🚀 **Roadmap Update:** A standalone **Windows Executable (`.exe`)** and **MacOS Executable (`.app`)** version is currently under development. This will allow users to launch PureCode as a lightweight desktop application with a single click—no Python, Flutter, or terminal setups required.
+> 🚀 **Roadmap Update:** The **Windows Executable (`.exe`)** is now live! We are currently working on the **MacOS Executable (`.app`)** version. This will allow Mac users to launch PureCode as a lightweight desktop application with a single click—no Python, Flutter, or terminal setups required.
 
 ---
 
