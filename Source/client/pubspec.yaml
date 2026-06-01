@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.6.0
-  window_manager: ^0.3.7
+  window_manager: ^0.3.7 # Agrega esta línea para incluir la dependencia window_manager
 
 dev_dependencies:
   flutter_test:
