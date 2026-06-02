@@ -80,6 +80,8 @@ def return_pip_caches():
 
 # Define a custom logging configuration to disable uvicorn's default logging
 # We created an empty log configuration to trick Uvicorn
+# definimos una configuración de logging personalizada para desactivar el logging predeterminado de uvicorn
+# Creamos una configuración de log vacía para engañar a Uvicorn
 LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
