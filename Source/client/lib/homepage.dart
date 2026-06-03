@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'api_services.dart';
 
@@ -29,6 +30,45 @@ class _HomepageState extends State<Homepage> {
           fontWeight: FontWeight.bold,
         ),
         backgroundColor: const Color(0xFF0F172A),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF0F172A)
+              ),
+              child: 
+              Text("Menu",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30
+              )
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('About'),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('About PureCode', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+
+                      content: Text("PureCode is a tool designed to optimize the workflow of developers and advanced users by simplifying system maintenance. With a single click, it allows you to debug workstations by deleting unnecessary temporary files and caches. Its most notable feature is the ability to manage and reduce 'System Data' files on macOS, freeing up storage space quickly and safely."
+                      , style: TextStyle(fontSize: 20, color: Color(0xFF0F172A))),
+                    );
+                  }
+                );
+
+              },
+              
+            )
+          
+          ],
+        ),
       ),
       body: Center(
         
@@ -84,9 +124,10 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(height: 20),
                       
 
-                      CheckboxListTile( // This widget provides a checkbox with a title and subtitle, making it ideal for our cache cleaning options
-                        title: Text('Gradle Caches'),
-                        subtitle: Text('Removes .gradle build artifacts'),
+                      CheckboxListTile( 
+                        // This widget provides a checkbox with a title and subtitle, making it ideal for our cache cleaning options
+                        title: Text('Gradle Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)), // Title of the checkbox
+                        subtitle: Text('Removes .gradle build artifacts', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)), // Subtitle providing more information about what this option does
                         value: gradleCaches,
                         onChanged: (bool? value) {
                           setState(() {
@@ -97,9 +138,11 @@ class _HomepageState extends State<Homepage> {
 
                       SizedBox(height: 20),
 
+
+
                       CheckboxListTile(
-                        title: Text('Android Studio Caches'),
-                        subtitle: Text('Removes Android Studio Caches files'),
+                        title: Text('Android Studio Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        subtitle: Text('Removes Android Studio Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)),
                         value: androidCaches,
                         onChanged: (bool? value) {
                           setState(() {
@@ -111,8 +154,8 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(height: 20),
 
                       CheckboxListTile(
-                        title: Text('Flutter Caches'),
-                        subtitle: Text('Removes Flutter Caches files'),
+                        title: Text('Flutter Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        subtitle: Text('Removes Flutter Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)),
                         value: flutterCaches,
                         onChanged: (bool? value) {
                           setState(() {
@@ -124,8 +167,8 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(height: 20),
 
                       CheckboxListTile(
-                        title: Text('Pip Python Caches'),
-                        subtitle: Text('Removes Pip Python Caches files'),
+                        title: Text('Pip Python Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        subtitle: Text('Removes Pip Python Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)),
                         value: pipCaches,
                         onChanged: (bool? value) {
                           setState(() {
