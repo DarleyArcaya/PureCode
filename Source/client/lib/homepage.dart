@@ -79,7 +79,7 @@ class _HomepageState extends State<Homepage> {
               padding: EdgeInsets.all(20.0),
               child: Container(
                 height: 100,
-                width: 800,
+                width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color.fromARGB(255, 233, 233, 233),
@@ -87,7 +87,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 child: Row(
                   children: [
-                    GestureDetector(
+                    InkWell(
                       onTap: () async {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Your Mac System Data Caches have been cleaned!"),
@@ -98,9 +98,22 @@ class _HomepageState extends State<Homepage> {
 
                         );
                       },
-                  child: Image.asset('assets/cleanpc/mac.png', height: 100, width: 100, fit: BoxFit.contain),
+                  child: Container(
+                    padding: const EdgeInsets.all(10), // Padding para darle margen interno // Padding for internal margin
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10), // Importante para que el ripple se vea bien // Important for the ripple effect to look good
+                    boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5)],
+                  ),
+
+                  child: Image.asset(
+                  'assets/cleanpc/mac.png', 
+                  height: 100, 
+                  width: 100, 
+                  fit: BoxFit.contain
+                  ),
+
                 ),
-                  
+                    )
                   ]
                 )
                  
@@ -127,7 +140,7 @@ class _HomepageState extends State<Homepage> {
                       CheckboxListTile( 
                         // This widget provides a checkbox with a title and subtitle, making it ideal for our cache cleaning options
                         title: Text('Gradle Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)), // Title of the checkbox
-                        subtitle: Text('Removes .gradle build artifacts', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)), // Subtitle providing more information about what this option does
+                        subtitle: Text('Removes .gradle build artifacts', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.blue)), // Subtitle providing more information about what this option does
                         value: gradleCaches,
                         onChanged: (bool? value) {
                           setState(() {
@@ -142,7 +155,7 @@ class _HomepageState extends State<Homepage> {
 
                       CheckboxListTile(
                         title: Text('Android Studio Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        subtitle: Text('Removes Android Studio Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)),
+                        subtitle: Text('Removes Android Studio Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.blue)),
                         value: androidCaches,
                         onChanged: (bool? value) {
                           setState(() {
@@ -155,7 +168,7 @@ class _HomepageState extends State<Homepage> {
 
                       CheckboxListTile(
                         title: Text('Flutter Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        subtitle: Text('Removes Flutter Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)),
+                        subtitle: Text('Removes Flutter Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.blue)),
                         value: flutterCaches,
                         onChanged: (bool? value) {
                           setState(() {
@@ -168,7 +181,7 @@ class _HomepageState extends State<Homepage> {
 
                       CheckboxListTile(
                         title: Text('Pip Python Caches', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        subtitle: Text('Removes Pip Python Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.red)),
+                        subtitle: Text('Removes Pip Python Caches files', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.blue)),
                         value: pipCaches,
                         onChanged: (bool? value) {
                           setState(() {

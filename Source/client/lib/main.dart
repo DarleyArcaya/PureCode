@@ -93,7 +93,13 @@ class MainApp extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        checkboxTheme: CheckboxThemeData( // Customize the appearance of checkboxes
+          fillColor: WidgetStateProperty.all(Colors.blue) // Set the color of the checkbox when it is checked
+        )
+
+      ),
       debugShowCheckedModeBanner: false,
       home: Homepage(
       ),
