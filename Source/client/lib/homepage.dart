@@ -15,6 +15,7 @@ class _HomepageState extends State<Homepage> {
   bool androidCaches = false;
   bool flutterCaches = false;
   bool pipCaches = false;
+  bool macCaches = false;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +45,25 @@ class _HomepageState extends State<Homepage> {
                   color: const Color.fromARGB(255, 233, 233, 233),
               
                 ),
-                child: Text('PureCode is an optimization tool designed by a developer, for developers. It focuses on "surgical cleaning" for development environments, removing unnecessary files that generic cleaners usually ignore. Caches removed here are: Gradle Build Caches, Android Studio Cache, PIP Python Caches and Flutter Caches. There will be more caches added in the future. YOU ARE USING THIS APP UNDER YOUR OWN RESPONSABILITY. If you are not a developer, please do not'),
-                
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () async {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Your Mac System Data Caches have been cleaned!"),
+                          backgroundColor: Colors.blue
+                          )
+                          
+                        
+
+                        );
+                      },
+                  child: Image.asset('assets/cleanpc/mac.png', height: 100, width: 100, fit: BoxFit.contain),
+                ),
+                  
+                  ]
+                )
+                 
               ),
 
               
@@ -66,7 +84,7 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(height: 20),
                       
 
-                      CheckboxListTile(
+                      CheckboxListTile( // This widget provides a checkbox with a title and subtitle, making it ideal for our cache cleaning options
                         title: Text('Gradle Caches'),
                         subtitle: Text('Removes .gradle build artifacts'),
                         value: gradleCaches,
@@ -171,7 +189,7 @@ class _HomepageState extends State<Homepage> {
                       content: Text(success
                       ? 'Selected caches cleaned successfully!'
                       : 'An error ocurred while cleaning caches. Please try again.'),
-                      backgroundColor: success ? Colors.green : Colors.red,
+                      backgroundColor: success ? Colors.blue : Colors.red,
                     )
                   );
                 },

@@ -24,6 +24,7 @@ flutter:
     - assets/icon/app_icon.png
     - assets/backend/ # Incluye esta línea para que Flutter reconozca la carpeta backend y su contenido el (main.exe), aunque esté vacía.
     #- assets/backend/_internal/ # Incluye esta línea para que Flutter reconozca la carpeta _internal y su contenido (main.exe), aunque esté vacía.
+    - assets/cleanpc/mac.png
 
 flutter_launcher_icons:
   android: true
