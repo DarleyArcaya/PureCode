@@ -17,6 +17,7 @@ class _HomepageState extends State<Homepage> {
   bool flutterCaches = false;
   bool pipCaches = false;
   bool macCaches = false;
+  bool winCaches = false;
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +129,7 @@ class _HomepageState extends State<Homepage> {
                   InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete WINDOWS CACHES
 
                     onTap: () async {
+                      
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Your Windows System Data Caches Have Been Cleaned!"),
                         backgroundColor: Colors.blue
