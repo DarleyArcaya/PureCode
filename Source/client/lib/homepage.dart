@@ -79,7 +79,7 @@ class _HomepageState extends State<Homepage> {
               padding: EdgeInsets.all(20.0),
               child: Container(
                 height: 130,
-                width: 280,
+                width: 290,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color.fromARGB(255, 233, 233, 233),
@@ -108,7 +108,7 @@ class _HomepageState extends State<Homepage> {
                       padding: const EdgeInsets.all(10), // Padding para darle margen interno // Padding for internal margin
                       decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10), // Importante para que el ripple se vea bien // Important for the ripple effect to look good
-                      boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5)],
+                      boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 0)], // This boxShadow is used for the ripple effect // This boxShadow
                     ),
 
                     child: Image.asset(
@@ -122,7 +122,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                     
                     
-                const SizedBox(width: 20), // Espacio entre las dos imágenes // Space between the two images
+                const SizedBox(width: 50), // Espacio entre las dos imágenes // Space between the two images
 
                  // Cambia el cursor a una mano para indicar que es interactivo
                   InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete WINDOWS CACHES
@@ -142,7 +142,7 @@ class _HomepageState extends State<Homepage> {
                     padding: const EdgeInsets.all(10), // Padding para darle margen interno // Padding for internal margin
                     decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10), // Importante para que el ripple se vea bien // Important for the ripple effect to look good
-                    boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5)],
+                    boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 0)], // This boxShadow is used to create a shadow effect around
                   ),
 
                   child: Image.asset(
