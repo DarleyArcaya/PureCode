@@ -78,26 +78,66 @@ class _HomepageState extends State<Homepage> {
             Padding(
               padding: EdgeInsets.all(20.0),
               child: Container(
-                height: 100,
-                width: 300,
+                height: 130,
+                width: 280,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color.fromARGB(255, 233, 233, 233),
               
                 ),
                 child: Row(
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Your Mac System Data Caches have been cleaned!"),
-                          backgroundColor: Colors.blue
-                          )
-                          
-                        
+                  
+                  mainAxisAlignment: MainAxisAlignment.center,
 
+                  children: [
+                    
+                      // Cambia el cursor a una mano para indicar que es interactivo
+            
+                      InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete MAC CACHES
+                        onTap: () async {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Your Mac System Data Caches have been cleaned!"),
+                            backgroundColor: Colors.blue
+                            )
+                          );
+                        },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click, // Cambia el cursor a una mano para indicar que es interactivo
+                    
+                    child: Container(
+                      padding: const EdgeInsets.all(10), // Padding para darle margen interno // Padding for internal margin
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10), // Importante para que el ripple se vea bien // Important for the ripple effect to look good
+                      boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5)],
+                    ),
+
+                    child: Image.asset(
+                    'assets/cleanpc/mac.png', 
+                    height: 100, 
+                    width: 100, 
+                    fit: BoxFit.contain
+                      ),
+                    ),
+                  ),
+                ),
+                    
+                    
+                const SizedBox(width: 20), // Espacio entre las dos imágenes // Space between the two images
+
+                 // Cambia el cursor a una mano para indicar que es interactivo
+                  InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete WINDOWS CACHES
+
+                    onTap: () async {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Your Windows System Data Caches Have Been Cleaned!"),
+                        backgroundColor: Colors.blue
+                          )
                         );
                       },
+
+                  child: MouseRegion(
+                      cursor: SystemMouseCursors.click, // Cambia el cursor a una mano para indicar que es interactivo
+                  
                   child: Container(
                     padding: const EdgeInsets.all(10), // Padding para darle margen interno // Padding for internal margin
                     decoration: BoxDecoration(
@@ -106,17 +146,16 @@ class _HomepageState extends State<Homepage> {
                   ),
 
                   child: Image.asset(
-                  'assets/cleanpc/mac.png', 
+                  'assets/cleanpc/win.png', 
                   height: 100, 
                   width: 100, 
                   fit: BoxFit.contain
-                  ),
-
+                           ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                    )
-                  ]
-                )
-                 
               ),
 
               
