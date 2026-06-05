@@ -43,8 +43,9 @@ VERSION_URL = "https://raw.githubusercontent.com/DarleyArcaya/PureCode/refs/head
 def download_new_version():
     try:
         response = requests.get(VERSION_URL, timeout=5)
-        response.raise_for_status()
-        data = response.json()
+        response.raise_for_status() # Esto es para que no se ejecute si hay un error en la petición / This is for that the code doesn't run if there is an error in the request
+        
+        data = response.json() # Esto es para convertir el JSON en un diccionario / This is for convert the JSON to a dictionary
 
         remote_version = data.get('latest_version', "0.0.0")
 
