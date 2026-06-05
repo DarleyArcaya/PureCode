@@ -35,7 +35,7 @@ app = FastAPI()
 
 
 CURRENT_VERSION = "0.9.0"
-
+VERSION_URL = "https://raw.githubusercontent.com/DarleyArcaya/PureCode/refs/heads/main/Source/api/updates/check_update.json"
 
 # =====================================================================
 # PASO 2: TUS ENDPOINTS (Se quedan exactamente como los tenías)
