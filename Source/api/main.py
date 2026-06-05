@@ -1,5 +1,7 @@
 import sys
 import os
+import requests
+
 
 # =====================================================================
 # PASO 0: PARCHE CRÍTICO DE INICIALIZACIÓN (Milisegundo Cero) 
@@ -37,6 +39,31 @@ app = FastAPI()
 CURRENT_VERSION = "0.9.0"
 VERSION_URL = "https://raw.githubusercontent.com/DarleyArcaya/PureCode/refs/heads/main/Source/api/updates/check_update.json"
 
+@app.get('/check_updates')
+def download_new_version():
+    try:
+        response = requests.get(VERSION_URL, timeout=5)
+        response.raise_for_status()
+        data = response.json()
+
+        remote_version = data.get('latest_version', "0.0.0")
+
+        has_update = remote_version > CURRENT_VERSION
+
+        return {
+            "has_update": has_update,
+            "current_version": CURRENT_VERSION,
+            "latest_version": remote_version,
+            "download_url": data.get("url_download", ""),
+            "requiered": data.get("requiered_update", False)
+        }
+    
+    except requests.RequestException as e:
+
+        return {
+            "has_update": False,
+            "error": "No se pudo verificar la actualizacion"
+        }
 # =====================================================================
 # PASO 2: TUS ENDPOINTS (Se quedan exactamente como los tenías)
 # STEP 2: YOUR ENDPOINTS (They stay exactly as you had them)
