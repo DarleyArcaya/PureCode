@@ -33,6 +33,10 @@ import uvicorn
 
 app = FastAPI()
 
+
+CURRENT_VERSION = "0.9.0"
+
+
 # =====================================================================
 # PASO 2: TUS ENDPOINTS (Se quedan exactamente como los tenías)
 # STEP 2: YOUR ENDPOINTS (They stay exactly as you had them)
