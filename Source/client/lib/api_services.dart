@@ -63,5 +63,14 @@ class ApiServices {
     return false;
   }
  }
+  
+ static Future<bool> removeCacheMac() async {
+  try {
+    final mac = await http.get(Uri.parse('http://127.0.0.1:8000/check_updates'));
+    return mac.statusCode == 200;
+  } catch (e) {
+    return false;
+  }
+ }
 
 }
