@@ -4,6 +4,11 @@
 <dict>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
+	<!-- Permisos de red para macOS -->
+	<!-- Sin estos, cualquier petición HTTP (incluso a localhost) falla en silencio -->
+	<!-- network.server = recibir conexiones entrantes -->
+	<!-- network.client = hacer peticiones salientes (HTTP, fetch, etc.) -->
+	<!-- Flutter NO los incluye por defecto — agregarlos manualmente en cada proyecto -->
 	<key>com.apple.security.network.client</key>
 	<true/>
 </dict>
