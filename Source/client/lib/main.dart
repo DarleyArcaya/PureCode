@@ -53,7 +53,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
     // fullScreen: true,   // Open in fullscreen mode
   );
 
-  // STEP 4: Apply configuration to the window
+ // STEP 4: Apply configuration to the window
   // Waits for window to be ready, then shows and focuses it
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();   // Makes the window visible
