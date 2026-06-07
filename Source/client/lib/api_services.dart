@@ -72,7 +72,7 @@ class ApiServices {
       final data = json.decode(update.body); // we are using the library convert to use this code line and convert text to JSON
       
       if (data['has_update'] == true){
-        _showUpdateDialog(context, data['latest_version']);
+        //_showUpdateDialog(context, data['latest_version']);
       }
 
     

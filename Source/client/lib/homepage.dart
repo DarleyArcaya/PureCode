@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'api_services.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
+import 'package:url_launcher/url_launcher.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -40,7 +43,7 @@ class _HomepageState extends State<Homepage> {
                 color: Color(0xFF0F172A)
               ),
               child: 
-              Text("Menu",
+              Text("Settings",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30
@@ -49,8 +52,10 @@ class _HomepageState extends State<Homepage> {
             ),
             ListTile(
               leading: Icon(Icons.info),
-              title: Text('About'),
+              title: Text('About', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
+                Navigator.of(context).pop(); // This is for close the drawer once users click on it 
+
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -62,11 +67,51 @@ class _HomepageState extends State<Homepage> {
                     );
                   }
                 );
+              }, 
+            ),
+            ListTile(
+              leading: Icon(Icons.update), 
+              title: Text("Check for Updates", style: TextStyle(fontWeight: FontWeight.bold)),
+              onTap: () async {
+                Navigator.of(context).pop(); // This is for close the drawer once users click on it 
+                  try{
+                    final update = await http.get(Uri.parse('http://127.0.0.1:8000/check_updates'));
+                    if (!mounted) return;
 
-              },
-              
-            )
-          
+                      if (update.statusCode == 200){
+                        final data = json.decode(update.body); // we are using the library convert to use this code line and convert text to JSON
+                        
+                        if (data['has_update'] == true){
+                          _showUpdateDialog(context, data['latest_version']);
+                        }
+                        else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("No updates avaliable"),
+                            backgroundColor: Colors.amber,
+                            )
+                          );
+                        }
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Something wents wront"),
+                            backgroundColor: Colors.red,
+                            )
+                          );
+                        }
+                  } catch (e) {
+                    if (!mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Could not connect to the server"),
+                      backgroundColor: Colors.red,
+                      ),
+                    );
+                  }
+                  },
+
+
+        
+            
+            ),
           ],
         ),
       ),
@@ -301,5 +346,57 @@ class _HomepageState extends State<Homepage> {
         
       )
     );
-  } 
+  }
+
+  void _showUpdateDialog(BuildContext context, String latestVersion) { // This is for check updates
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Row(
+            children: [
+              Icon(Icons.system_update, color: Colors.blue),
+              SizedBox(width: 10),
+              Text('New update available'),
+            ],
+
+          ),
+          content: Text(
+            "A new version of PureCode (v$latestVersion) is available. "
+            "Please Update to access the latest optimization features.",
+            style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Later', style: TextStyle(color: Colors.red))
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Here we used flutter pub add url_launcher
+                // then, we imported "import 'package:url_launcher/url_launcher.dart';"
+                // once done it, we can use the following code 
+
+                final Uri url = Uri.parse("https://github.com/DarleyArcaya/PureCode/releases");
+                launchUrl(url); // This is for open the url in browser. 
+
+
+              },
+              child: const Text('Update Now')
+              
+    
+              )
+          ],
+        );
+        }
+      );
+
+
+  }
 }
