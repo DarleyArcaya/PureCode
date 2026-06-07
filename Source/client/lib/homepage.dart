@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'api_services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
+
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -64,6 +65,7 @@ class _HomepageState extends State<Homepage> {
 
                       content: Text("PureCode is a tool designed to optimize the workflow of developers and advanced users by simplifying system maintenance. With a single click, it allows you to debug workstations by deleting unnecessary temporary files and caches. Its most notable feature is the ability to manage and reduce 'System Data' files on macOS, freeing up storage space quickly and safely."
                       , style: TextStyle(fontSize: 20, color: Color(0xFF0F172A))),
+                    
                     );
                   }
                 );
@@ -72,11 +74,16 @@ class _HomepageState extends State<Homepage> {
             ListTile(
               leading: Icon(Icons.update), 
               title: Text("Check for Updates", style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text("Check for updates and download them from GitHub"),
               onTap: () async {
                 Navigator.of(context).pop(); // This is for close the drawer once users click on it 
                   try{
                     final update = await http.get(Uri.parse('http://127.0.0.1:8000/check_updates'));
-                    if (!mounted) return;
+
+                    // FRENO DE MANO: Si el usuario se salió de la pantalla mientras esperábamos al servidor,
+                    // frenamos aquí para evitar que la app crashee al intentar dibujar en una pantalla muerta.
+                    if (!context.mounted) return;
+                    
 
                       if (update.statusCode == 200){
                         final data = json.decode(update.body); // we are using the library convert to use this code line and convert text to JSON
@@ -106,12 +113,27 @@ class _HomepageState extends State<Homepage> {
                       ),
                     );
                   }
-                  },
-
-
-        
-            
+                }
+          
             ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text("What is new and fixed", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+              subtitle: Text("Check the changelog for more information", style: TextStyle(color: Colors.black)),
+
+              onTap: () {
+                Navigator.of(context).pop();
+
+                
+              },
+            
+
+            )
+            
+
+
+ 
+            
           ],
         ),
       ),
@@ -383,7 +405,7 @@ class _HomepageState extends State<Homepage> {
                 // then, we imported "import 'package:url_launcher/url_launcher.dart';"
                 // once done it, we can use the following code 
 
-                final Uri url = Uri.parse("https://github.com/DarleyArcaya/PureCode/releases");
+                final url = Uri.parse("https://github.com/DarleyArcaya/PureCode/releases");
                 launchUrl(url); // This is for open the url in browser. 
 
 
