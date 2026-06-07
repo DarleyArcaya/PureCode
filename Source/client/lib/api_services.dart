@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-
+import 'dart:convert'; // this library is in charge of converting text to JSON in the check_update function
 
 /// A service class responsible for managing API communications 
 /// between the Flutter frontend and the FastAPI backend.
@@ -64,13 +65,23 @@ class ApiServices {
   }
  }
   
- static Future<bool> removeCacheMac() async {
+ static Future<void> checkUpdates(BuildContext context) async { // Here we are creating the connection from the api to flutter for get updates notifications
   try {
-    final mac = await http.get(Uri.parse('http://127.0.0.1:8000/check_updates'));
-    return mac.statusCode == 200;
+    final update = await http.get(Uri.parse('http://127.0.0.1:8000/check_updates'));
+    if (update.statusCode == 200){
+      final data = json.decode(update.body); // we are using the library convert to use this code line and convert text to JSON
+      
+      if (data['has_update'] == true){
+        _showUpdateDialog(context, data['latest_version']);
+      }
+
+    
+    }
   } catch (e) {
-    return false;
-  }
+    debugPrint("There is an error with updates:  $e");
+
+  } 
+  
  }
 
 }
