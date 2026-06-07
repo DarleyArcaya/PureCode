@@ -94,7 +94,7 @@ class _HomepageState extends State<Homepage> {
                         else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("No updates avaliable"),
-                            backgroundColor: Colors.amber,
+                            backgroundColor: Colors.blue,
                             )
                           );
                         }
