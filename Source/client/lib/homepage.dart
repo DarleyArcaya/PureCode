@@ -126,14 +126,7 @@ class _HomepageState extends State<Homepage> {
 
                 
               },
-            
-
-            )
-            
-
-
- 
-            
+            ),
           ],
         ),
       ),
@@ -146,7 +139,7 @@ class _HomepageState extends State<Homepage> {
               padding: EdgeInsets.all(20.0),
               child: Container(
                 height: 130,
-                width: 290,
+                width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color.fromARGB(255, 233, 233, 233),
@@ -163,7 +156,7 @@ class _HomepageState extends State<Homepage> {
                       InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete MAC CACHES
                         onTap: () async {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Your Mac System Data Caches have been cleaned!"),
+                            SnackBar(content: Text("Your Mac is Optimized"),
                             backgroundColor: Colors.blue
                             )
                           );
@@ -197,7 +190,7 @@ class _HomepageState extends State<Homepage> {
                     onTap: () async {
                       
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Your Windows System Data Caches Have Been Cleaned!"),
+                        SnackBar(content: Text("Your Windows PC is Optimized"),
                         backgroundColor: Colors.blue
                           )
                         );
@@ -226,8 +219,28 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
 
-              
+            ),
+            
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Container(
+                width: 300,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: const Color.fromARGB(255, 233, 233, 233),
+
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Optimize Mac", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+                    Text("Optimize Windows", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue))
+                  ]
+                ),
               ),
+            ),
+            
             Padding(
               padding: EdgeInsets.all(20.0),
               child: Container(
@@ -303,7 +316,10 @@ class _HomepageState extends State<Homepage> {
                 ),
           ],
         ),
+        
       ),
+      
+
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFFE2E8F0),
         child: Padding(
