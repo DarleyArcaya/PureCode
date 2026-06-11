@@ -128,8 +128,13 @@ class _HomepageState extends State<Homepage> {
                   builder: (context) => Center(
                     child: ListView(
                       children: [
-                        Text("Version: 0.9.0", style: TextStyle(color: Colors.black, fontSize: 20), textAlign: TextAlign.center),
-                        // we will use \n for move down the line // usaremos \n para moverse a la siguiente línea (o sea para abajo)// 
+                        Text("Version: 0.9.0", style: TextStyle(
+                          color: Colors.black,
+                         fontSize: 20, fontWeight: FontWeight.bold), 
+                         textAlign: TextAlign.center
+                         ),
+                        // we will use \n for move down the line // usaremos \n para moverse a la siguiente línea (o sea para abajo)//
+
                       ],
                     )
                   ),
@@ -140,9 +145,13 @@ class _HomepageState extends State<Homepage> {
                       bottomLeft: Radius.circular(1),
                       bottomRight: Radius.circular(1)
                     ),
-                    
-                  
-                  )
+                  ),
+                  backgroundColor: Colors.white,
+                  elevation: 200,
+                  isScrollControlled: true,
+
+
+
 
 
                    
