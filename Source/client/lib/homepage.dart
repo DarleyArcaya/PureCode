@@ -123,8 +123,30 @@ class _HomepageState extends State<Homepage> {
 
               onTap: () {
                 Navigator.of(context).pop();
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => Center(
+                    child: ListView(
+                      children: [
+                        Text("Version: 0.9.0", style: TextStyle(color: Colors.black, fontSize: 20), textAlign: TextAlign.center),
+                        // we will use \n for move down the line // usaremos \n para moverse a la siguiente línea (o sea para abajo)// 
+                      ],
+                    )
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(10),
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(1),
+                      bottomRight: Radius.circular(1)
+                    ),
+                    
+                  
+                  )
 
-                
+
+                   
+                );
               },
             ),
           ],
