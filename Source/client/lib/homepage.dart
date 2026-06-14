@@ -15,6 +15,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
+
   // State variables to track which caches are selected for cleaning
   bool gradleCaches = false;
   bool androidCaches = false;
@@ -37,6 +38,9 @@ class _HomepageState extends State<Homepage> {
         ),
         backgroundColor: const Color(0xFF0F172A),
       ),
+
+
+
       endDrawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -152,11 +156,6 @@ class _HomepageState extends State<Homepage> {
                   elevation: 200,
                   isScrollControlled: true,
 
-
-
-
-
-                   
                 );
               },
             ),
