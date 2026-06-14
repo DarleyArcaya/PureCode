@@ -3,7 +3,8 @@ import 'api_services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
 import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
-
+import 'pages/optimize_win.dart/';
+import 'pages/optimize_mac.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -21,6 +22,7 @@ class _HomepageState extends State<Homepage> {
   bool pipCaches = false;
   bool macCaches = false;
   bool winCaches = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -271,7 +273,8 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
             ),
-            
+
+
             Padding(
               padding: EdgeInsets.all(20.0),
               child: Container(
