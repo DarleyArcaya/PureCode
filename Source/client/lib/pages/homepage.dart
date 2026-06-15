@@ -37,6 +37,7 @@ class _HomepageState extends State<Homepage> {
           fontWeight: FontWeight.bold,
         ),
         backgroundColor: const Color(0xFF0F172A),
+        iconTheme: IconThemeData(color: Colors.white), // this is for give a color to icon themes in appbar
       ),
 
       endDrawer: Drawer(
@@ -178,7 +179,8 @@ class _HomepageState extends State<Homepage> {
               
             },
             indicatorColor: Colors.white,
-            selectedIconTheme: IconThemeData(color: Colors.blue),
+            unselectedIconTheme: IconThemeData(color: Colors.white), // This is for give a color to unselected Icons
+            selectedIconTheme: IconThemeData(color: Colors.blue), // this is for give a color to selected Icons
 
 
             destinations: const [

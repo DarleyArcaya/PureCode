@@ -22,6 +22,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
           fontWeight: FontWeight.bold,
         ),
         backgroundColor: const Color(0xFF0F172A),
+        iconTheme: IconThemeData(color: Colors.white)
       ),
       body: Row(
         children: [
@@ -38,6 +39,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
               }
             },
             indicatorColor: Colors.white,
+             unselectedIconTheme: IconThemeData(color: Colors.white),
             selectedIconTheme: const IconThemeData(color: Colors.blue),
             destinations: const [
               NavigationRailDestination(
