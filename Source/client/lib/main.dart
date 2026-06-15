@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; 
-import 'package:purecode/homepage.dart';
+import 'package:purecode/pages/homepage.dart';
 import 'package:window_manager/window_manager.dart';
 import 'dart:io'; // Importa la biblioteca para manejar procesos y archivos y obtener la ruta actual del directorio para usar la funcion del backend
                   // en la carpeta assets/backend/main.exe, sin esto no podríamos ejecutar el backend desde el cliente, 
