@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:purecode/pages/homepage.dart';
-=======
 import 'homepage.dart';
->>>>>>> 0ce3ec6d8906d70e5ccded8c26234b6f60e74138
-
 
 class OptimizeWindow extends StatefulWidget {
   const OptimizeWindow({super.key});
@@ -16,13 +11,8 @@ class OptimizeWindow extends StatefulWidget {
 class _MyWidgetState extends State<OptimizeWindow> {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    int _index = 1;
-
-=======
     int index = 1;
     
->>>>>>> 0ce3ec6d8906d70e5ccded8c26234b6f60e74138
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
@@ -39,32 +29,29 @@ class _MyWidgetState extends State<OptimizeWindow> {
             labelType: NavigationRailLabelType.all,
             backgroundColor: const Color(0xFF0F172A),
             selectedIndex: index,
-
             onDestinationSelected: (int index) {
               if (index == 0) {
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => Homepage())
-                  );
+                  MaterialPageRoute(builder: (context) => const Homepage()),
+                );
               }
-              
             },
             indicatorColor: Colors.white,
-            selectedIconTheme: IconThemeData(color: Colors.blue),
-
+            selectedIconTheme: const IconThemeData(color: Colors.blue),
             destinations: const [
               NavigationRailDestination(
-                icon: Icon(Icons.home),
+                icon: Icon(Icons.home), 
                 label: Text('Home', style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
               NavigationRailDestination(
-                icon: Icon(Icons.bolt),
-                label: Text('Optimize Pc', style: TextStyle(fontSize: 16, color: Colors.white))
-              )
+                icon: Icon(Icons.bolt), 
+                label: Text('Optimize Pc', style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
             ],
           ),
-        ]
-      )
+        ],
+      ),
     );
   }
 }
