@@ -3,8 +3,7 @@ import 'api_services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
 import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
-import 'pages/optimize_win.dart/';
-import 'pages/optimize_mac.dart';
+import 'pages/optimize_win.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -15,6 +14,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
+  int _index = 0; // this variable goes in NavigationRail
 
   // State variables to track which caches are selected for cleaning
   bool gradleCaches = false;
@@ -38,8 +38,6 @@ class _HomepageState extends State<Homepage> {
         ),
         backgroundColor: const Color(0xFF0F172A),
       ),
-
-
 
       endDrawer: Drawer(
         child: ListView(
@@ -162,8 +160,37 @@ class _HomepageState extends State<Homepage> {
           ],
         ),
       ),
-      body: Center(
-        
+
+
+      body: Row(
+        children: [
+          NavigationRail(
+            labelType: NavigationRailLabelType.all,
+            backgroundColor: const Color(0xFF0F172A),
+            selectedIndex: _index,
+            onDestinationSelected: (int index) {
+              if (index == 1) {
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => OptimizeWindow())
+                  );
+              }
+              
+            },
+            destinations: const [
+              NavigationRailDestination(
+                icon: Icon(Icons.home),
+                label: Text('Home', style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.bolt),
+                label: Text('Optimize Pc', style: TextStyle(fontSize: 16, color: Colors.white))
+              )
+            ],
+          ),
+          const VerticalDivider(thickness: 1, width: 1),
+
+        Expanded(
         child: Column(
 
           children: [
@@ -273,12 +300,12 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
 
-
-            Padding(
+            Expanded(
+            child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Container(
-                width: 800,
-                height: 360,
+                //width: 800,
+                //height: 800,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: const Color.fromARGB(255, 233, 233, 233),
@@ -347,9 +374,13 @@ class _HomepageState extends State<Homepage> {
                   ),
                   ),
                 ),
+            )
+            
           ],
         ),
         
+      ),
+        ]
       ),
       
 
@@ -416,7 +447,10 @@ class _HomepageState extends State<Homepage> {
         ),
         
       )
-    );
+      );
+      
+      
+    
   }
 
   void _showUpdateDialog(BuildContext context, String latestVersion) { // This is for check updates
