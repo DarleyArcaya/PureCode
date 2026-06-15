@@ -13,6 +13,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
   @override
   Widget build(BuildContext context) {
     int _index = 1;
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
@@ -29,6 +30,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
             labelType: NavigationRailLabelType.all,
             backgroundColor: const Color(0xFF0F172A),
             selectedIndex: _index,
+
             onDestinationSelected: (int index) {
               if (index == 0) {
                 Navigator.push(
@@ -38,6 +40,9 @@ class _MyWidgetState extends State<OptimizeWindow> {
               }
               
             },
+            indicatorColor: Colors.white,
+            selectedIconTheme: IconThemeData(color: Colors.blue),
+
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.home),
