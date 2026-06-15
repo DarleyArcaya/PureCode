@@ -6,8 +6,9 @@ def optimization_system():
     if os == "Windows":
         print("This system is window")
     elif os == "Darwin":
-        print("This system is windows")
+        print("This system is Darwin")
     else:
-        print("There is an issue with the function")
+        print("This system is other")
+    
 
 optimization_system()
