@@ -30,6 +30,8 @@ if getattr(sys, 'frozen', False):
 
 from fastapi import FastAPI
 from core import gradle_caches, android_caches, flutter_caches, pip_caches
+from core.optimosys import optimosys
+
 import uvicorn
 
 
@@ -109,6 +111,13 @@ def return_flutter_caches():
 def return_pip_caches():
     result = pip_caches.clear_pip_caches()
     return 'Function is working correctly [remove pip caches]', result
+
+@app.get('/optimization_system')
+def return_optimization_system():
+    result = optimosys.optimization_system()
+    return 'Function is working correctly [remove optimization system]', result
+
+
 
 # Define a custom logging configuration to disable uvicorn's default logging
 # We created an empty log configuration to trick Uvicorn
