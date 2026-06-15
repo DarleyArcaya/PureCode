@@ -1,5 +1,4 @@
 import platform
-import os
 
 def optimization_system():
 
