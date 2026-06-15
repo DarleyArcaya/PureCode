@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:purecode/pages/homepage.dart';
+=======
+import 'homepage.dart';
+>>>>>>> 0ce3ec6d8906d70e5ccded8c26234b6f60e74138
 
 
 class OptimizeWindow extends StatefulWidget {
@@ -12,8 +16,13 @@ class OptimizeWindow extends StatefulWidget {
 class _MyWidgetState extends State<OptimizeWindow> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     int _index = 1;
 
+=======
+    int index = 1;
+    
+>>>>>>> 0ce3ec6d8906d70e5ccded8c26234b6f60e74138
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
@@ -29,7 +38,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
           NavigationRail(
             labelType: NavigationRailLabelType.all,
             backgroundColor: const Color(0xFF0F172A),
-            selectedIndex: _index,
+            selectedIndex: index,
 
             onDestinationSelected: (int index) {
               if (index == 0) {

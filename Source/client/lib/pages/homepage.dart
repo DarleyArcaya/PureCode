@@ -14,7 +14,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
-  int _index = 0; // this variable goes in NavigationRail
+  final int _index = 0; // this variable goes in NavigationRail
 
   // State variables to track which caches are selected for cleaning
   bool gradleCaches = false;
