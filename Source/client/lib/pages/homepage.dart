@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'api_services.dart';
+import '../services/api_services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
 import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
-import 'pages/optimize_pc.dart';
+import 'optimize_pc.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:purecode/homepage.dart';
+import 'package:purecode/pages/homepage.dart';
 
 
 class OptimizeWindow extends StatefulWidget {
@@ -13,7 +13,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
   @override
   Widget build(BuildContext context) {
     int _index = 1;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
