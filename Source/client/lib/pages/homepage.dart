@@ -31,10 +31,12 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
         title: const Text('PureCode'),
+        automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icono para virar en las paginas
         titleTextStyle: const TextStyle(
           color: Color.fromARGB(255, 234, 235, 238),
           fontSize: 24,
           fontWeight: FontWeight.bold,
+          
         ),
         backgroundColor: const Color(0xFF0F172A),
         iconTheme: IconThemeData(color: Colors.white), // this is for give a color to icon themes in appbar

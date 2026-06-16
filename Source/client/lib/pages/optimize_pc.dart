@@ -16,6 +16,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
+        automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icono para virar en las paginas
+
         titleTextStyle: const TextStyle(
           color: Color.fromARGB(255, 234, 235, 238),
           fontSize: 24,
