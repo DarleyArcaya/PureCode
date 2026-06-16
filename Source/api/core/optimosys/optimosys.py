@@ -28,21 +28,22 @@ def optimization_system():
                 shutil.rmtree(windows_optimization_1) # delete this folder
                 os.makedirs(windows_optimization_1) # create the same folder but empty
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
+
         
         if os.path.exists(windows_optimization_2):
             try:
                 shutil.rmtree(windows_optimization_2)
                 os.makedirs(windows_optimization_2)
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
         
         if os.path.exists(windows_optimization_3):
             try:
                 shutil.rmtree(windows_optimization_3)
                 os.makedirs(windows_optimization_3)
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
         
         print("Windows Optimization completed successfully.")
 
@@ -54,27 +55,27 @@ def optimization_system():
                 shutil.rmtree(macos_optimization_1) # delete this folder
                 os.makedirs(macos_optimization_1) # create the same 
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
 
         if os.path.exists(macos_optimization_2):
             try:
                 shutil.rmtree(macos_optimization_2)
                 os.makedirs(macos_optimization_2)
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
         
         if os.path.exists(macos_optimization_3):
             try:
                 shutil.rmtree(macos_optimization_3)
                 os.makedirs(macos_optimization_3)
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
         
         if os.path.exists(macos_optimization_4):
             try:
                 shutil.rmtree(macos_optimization_4)
                 os.makedirs(macos_optimization_4)
             except Exception:
-                pass
+                print('Something was wrong while deleting the folder')
         
         print("MacOs Optimization completed succesfully")
