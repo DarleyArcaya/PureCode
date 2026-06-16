@@ -158,6 +158,12 @@ class _HomepageState extends State<Homepage> {
                 );
               },
             ),
+            
+            const SizedBox(height: 300),
+          
+            ListTile(
+              subtitle: Text('Copyright © 2026 by Darley Silot Arcaya'),
+            ),
           ],
         ),
       ),
@@ -396,8 +402,9 @@ class _HomepageState extends State<Homepage> {
           padding: EdgeInsets.all(8.0),
           child: Row(
             children: <Widget>[
-              Text('Copyright © 2026 by Darley Silot Arcaya'),
-              Spacer(),
+              
+              Spacer(), // This is for spacing between the buttons
+
               ElevatedButton(
                 onPressed: () async { 
                   
