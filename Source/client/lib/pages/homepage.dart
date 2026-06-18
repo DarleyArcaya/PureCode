@@ -60,6 +60,7 @@ class _HomepageState extends State<Homepage> {
                 fontSize: 30
               )
               ),
+              
             ),
             ListTile(
               leading: Icon(Icons.info),
@@ -170,7 +171,7 @@ class _HomepageState extends State<Homepage> {
             builder: (context, isDark, child) {
               return ListTile(
                 leading: Icon(Icons.light_mode),
-                title: Text("Dark Mode / Light Mode", style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text("Light Mode / Dark Mode", style: TextStyle(fontWeight: FontWeight.bold)),
                 trailing: Switch(
                   value: isDark,
                   onChanged: (value) {

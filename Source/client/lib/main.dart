@@ -94,7 +94,7 @@ class MainApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
+    return ValueListenableBuilder(// ValueListenableBuilder es un widget que escucha un ValueNotifier y reconstruye su contenido cada vez que el valor cambia.
       valueListenable: isDarkMode,
       builder: (context, isDark, child) {
         return MaterialApp(
@@ -103,6 +103,7 @@ class MainApp extends StatelessWidget {
           home: Homepage(),
         );
       },
+
     );
   }
 }

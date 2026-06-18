@@ -34,3 +34,13 @@ final ThemeData darkTheme = ThemeData(
 );
 
 ValueNotifier<bool> isDarkMode = ValueNotifier(false);
+// ValueNotifier<bool> es una variable especial que avisa a todos los que la escuchan cuando su valor cambia.
+// por eso lo usamos aqui en este archivo, este archivo manda senales de que esta cambiando el tema de la aplicacion.
+
+//¿Siempre así? Solo cuando necesitas que un valor sea global y que la UI reaccione al cambio sin usar setState.
+// Para variables normales que no necesitan notificar nada, un bool simple está bien.
+
+////color: Theme.of(context).cardColor,
+
+// Theme.of(context) accede al tema activo de la app en ese momento, ya sea lightTheme o darkTheme.
+// Y .cardColor es una propiedad del tema que devuelve el color asignado para tarjetas y contenedores.
