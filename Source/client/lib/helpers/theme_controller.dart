@@ -1,0 +1,1 @@
+ValueNotifier<bool> isDarkMode = ValueNotifier(false);

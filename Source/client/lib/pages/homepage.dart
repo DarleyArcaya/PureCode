@@ -24,6 +24,11 @@ class _HomepageState extends State<Homepage> {
   bool macCaches = false;
   bool winCaches = false;
 
+  // for change light and dark mode
+  bool isDarkMode = false;
+  
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -161,6 +166,21 @@ class _HomepageState extends State<Homepage> {
               },
             ),
             
+           ListTile(
+            leading: Icon(Icons.light_mode),
+            title: Text("Dark Mode / Light Mode", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+            trailing: Switch(
+              value: isDarkMode,
+              onChanged: (value) {
+                setState(() {
+                  isDarkMode = value;
+
+                });
+              },
+            ),
+
+           ),
+
             const SizedBox(height: 300),
           
             ListTile(

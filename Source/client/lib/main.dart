@@ -95,14 +95,21 @@ class MainApp extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+       // Dark mode
       theme: ThemeData(
+        
+
+
         checkboxTheme: CheckboxThemeData( // Customize the appearance of checkboxes
-          fillColor: WidgetStateProperty.all(Colors.blue) // Set the color of the checkbox when it is checked
+          fillColor: WidgetStateProperty.all(Colors.blue)
+          
+           // Set the color of the checkbox when it is checked
         )
 
       ),
       debugShowCheckedModeBanner: false,
       home: Homepage(
+
       ),
     );
   }
