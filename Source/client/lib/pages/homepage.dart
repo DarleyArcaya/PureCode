@@ -169,7 +169,7 @@ class _HomepageState extends State<Homepage> {
            ListTile(
             leading: Icon(Icons.light_mode),
             title: Text("Dark Mode / Light Mode", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-            trailing: Switch(
+            trailing: Switch( // Using trailing for put the switch on the right side of the title, this also helps for anyother widget
               value: isDarkMode,
               onChanged: (value) {
                 setState(() {
