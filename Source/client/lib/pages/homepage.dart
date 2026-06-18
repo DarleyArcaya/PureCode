@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
 import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
 import 'optimize_pc.dart';
+import 'package:purecode/helpers/theme_controller.dart';
+
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -23,10 +25,6 @@ class _HomepageState extends State<Homepage> {
   bool pipCaches = false;
   bool macCaches = false;
   bool winCaches = false;
-
-  // for change light and dark mode
-  bool isDarkMode = false;
-  
 
 
 
@@ -165,21 +163,23 @@ class _HomepageState extends State<Homepage> {
                 );
               },
             ),
-            
-           ListTile(
-            leading: Icon(Icons.light_mode),
-            title: Text("Dark Mode / Light Mode", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-            trailing: Switch( // Using trailing for put the switch on the right side of the title, this also helps for anyother widget
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-
-                });
+          
+          ValueListenableBuilder(
+            valueListenable: isDarkMode,
+            builder: (context, isDark, child) {
+              return ListTile(
+                leading: Icon(Icons.light_mode),
+                title: Text("Dark Mode / Light Mode", style: TextStyle(fontWeight: FontWeight.bold)),
+                trailing: Switch(
+                  value: isDark,
+                  onChanged: (value) {
+                    isDarkMode.value = value;
+                    },
+                  ),
+                );
               },
             ),
-
-           ),
+              
 
             const SizedBox(height: 300),
           

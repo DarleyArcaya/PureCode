@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:purecode/helpers/theme_controller.dart'; 
 import 'package:purecode/pages/homepage.dart';
 import 'package:window_manager/window_manager.dart';
 import 'dart:io'; // Importa la biblioteca para manejar procesos y archivos y obtener la ruta actual del directorio para usar la funcion del backend
                   // en la carpeta assets/backend/main.exe, sin esto no podríamos ejecutar el backend desde el cliente, 
                   //ya que no tendríamos acceso a la ruta del archivo main.exe
                   // todo esto incluye lo de Process ?, await runBackend(), y todo lo que esta dentro de Future<void> runBackend() async { ... }
- 
+
 Process? backendProcess; // Variable global para almacenar el proceso del backend
 
 void main() async {  // 'async' allows us to use 'await' inside this function
@@ -90,26 +91,18 @@ Future <void> runBackend() async {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
+  
   @override
-
   Widget build(BuildContext context) {
-    return MaterialApp(
-       // Dark mode
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blueAccent
-        ),
-        checkboxTheme: CheckboxThemeData( // Customize the appearance of checkboxes
-          fillColor: WidgetStateProperty.all(Colors.blue),
-           // Set the color of the checkbox when it is checked
-        )
-
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Homepage(
-
-      ),
+    return ValueListenableBuilder(
+      valueListenable: isDarkMode,
+      builder: (context, isDark, child) {
+        return MaterialApp(
+          theme: isDark ? darkTheme : lightTheme,
+          debugShowCheckedModeBanner: false,
+          home: Homepage(),
+        );
+      },
     );
   }
 }
