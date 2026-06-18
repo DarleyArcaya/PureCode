@@ -31,7 +31,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      // backgroundColor: const Color(0xFFF8FAFC), this is not needed, the file theme_controller is managing this.
       appBar: AppBar(
         title: const Text('PureCode'),
         automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icono para virar en las paginas
@@ -128,8 +128,8 @@ class _HomepageState extends State<Homepage> {
             ),
             ListTile(
               leading: Icon(Icons.notifications),
-              title: Text("What is new and fixed", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-              subtitle: Text("Check the changelog for more information", style: TextStyle(color: Colors.black)),
+              title: Text("What is new and fixed", style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text("Check the changelog for more information"),
 
               onTap: () {
                 Navigator.of(context).pop();
@@ -235,7 +235,10 @@ class _HomepageState extends State<Homepage> {
                 width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 233, 233, 233),
+                  // color: const Color.fromARGB(255, 233, 233, 233), we wont use this because it is hardCoded
+                  color: Theme.of(context).cardColor, // we use this because .cardColor will use the color that flutter asing to our theme
+                                                      // usamos esto porque .cardColor sera el color que flutter asignara automaticamente a las tarjetas/contenedores segun si estas en modo oscuro o claro
+
               
                 ),
                 child: Row(
@@ -321,7 +324,8 @@ class _HomepageState extends State<Homepage> {
                 height: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 233, 233, 233),
+                  //color: const Color.fromARGB(255, 233, 233, 233),
+                  color: Theme.of(context).cardColor,
 
                 ),
                 child: Row(
@@ -342,7 +346,8 @@ class _HomepageState extends State<Homepage> {
                 //height: 800,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 233, 233, 233),
+                  //color: const Color.fromARGB(255, 233, 233, 233),
+                  color: Theme.of(context).cardColor,
                   ),
                   child: ListView(
                     //mainAxisAlignment: MainAxisAlignment.center,
@@ -419,7 +424,7 @@ class _HomepageState extends State<Homepage> {
       
 
       bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFFE2E8F0),
+        //color: const Color(0xFFE2E8F0), we dont need this, it is managed by theme_controller
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Row(
