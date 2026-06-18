@@ -71,10 +71,10 @@ class _HomepageState extends State<Homepage> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('About PureCode', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                      title: Text('About PureCode', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
 
                       content: Text("PureCode is a tool designed to optimize the workflow of developers and advanced users by simplifying system maintenance. With a single click, it allows you to debug workstations by deleting unnecessary temporary files and caches. Its most notable feature is the ability to manage and reduce 'System Data' files on macOS, freeing up storage space quickly and safely."
-                      , style: TextStyle(fontSize: 20, color: Color(0xFF0F172A))),
+                      , style: TextStyle(fontSize: 20, )),
                     
                     );
                   }
@@ -137,6 +137,7 @@ class _HomepageState extends State<Homepage> {
                   context: context,
                   builder: (context) => Center(
                     child: ListView(
+                      
                       children: [
                         Text("Version: 0.9.0", style: TextStyle(
                           color: Colors.black,
@@ -156,7 +157,7 @@ class _HomepageState extends State<Homepage> {
                       bottomRight: Radius.circular(1)
                     ),
                   ),
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).cardColor,
                   elevation: 200,
                   isScrollControlled: true,
 
