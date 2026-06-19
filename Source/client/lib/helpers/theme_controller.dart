@@ -44,3 +44,7 @@ ValueNotifier<bool> isDarkMode = ValueNotifier(false);
 
 // Theme.of(context) accede al tema activo de la app en ese momento, ya sea lightTheme o darkTheme.
 // Y .cardColor es una propiedad del tema que devuelve el color asignado para tarjetas y contenedores.
+
+
+// Esto es para salvar la desicion del usuario en si guardar el tema oscuro o blanco en el disco y no en la memoria
+// flutter pub add shared_preferences: This is for save valors in local and not in memory

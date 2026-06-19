@@ -6,12 +6,22 @@ import 'dart:io'; // Importa la biblioteca para manejar procesos y archivos y ob
                   // en la carpeta assets/backend/main.exe, sin esto no podríamos ejecutar el backend desde el cliente, 
                   //ya que no tendríamos acceso a la ruta del archivo main.exe
                   // todo esto incluye lo de Process ?, await runBackend(), y todo lo que esta dentro de Future<void> runBackend() async { ... }
+import 'package:shared_preferences/shared_preferences.dart'; // Esto es para almacenar las preferencias del usuario
+
 
 Process? backendProcess; // Variable global para almacenar el proceso del backend
 
-void main() async {  // 'async' allows us to use 'await' inside this function
-  // HOW I SET UP THE WINDOW MANAGER PLUGIN?
 
+void main() async {  // 'async' allows us to use 'await' inside this function
+
+  // Parte de la logica que usamos para guardar el tema oscuro o blanco en el disco y no en la memoria
+  final prefs = await SharedPreferences.getInstance(); // Variable global para almacenar las preferencias del usuario
+  bool savedTheme = prefs.getBool('isDarkMode') ?? false; // Variable global para almacenar si el usuario
+  isDarkMode.value = savedTheme; // Set the initial theme based on the saved preference
+
+  
+  // HOW I SET UP THE WINDOW MANAGER PLUGIN?
+  
   // STEP 1: Initialize Flutter before using plugins
   // Required when using native plugins before runApp()
   WidgetsFlutterBinding.ensureInitialized();

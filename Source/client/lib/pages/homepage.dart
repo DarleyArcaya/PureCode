@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../services/api_services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http; // This is for connect api with flutter or the app with Internet 
@@ -175,7 +176,11 @@ class _HomepageState extends State<Homepage> {
                 trailing: Switch(
                   value: isDark,
                   onChanged: (value) {
-                    isDarkMode.value = value;
+                    isDarkMode.value = value; 
+                    SharedPreferences.getInstance().then((prefs) { // Esto es para guardar el estado del tema en SharedPreference
+                      prefs.setBool('isDarkMode', value);
+                        }
+                      );
                     },
                   ),
                 );
@@ -328,6 +333,8 @@ class _HomepageState extends State<Homepage> {
                   borderRadius: BorderRadius.circular(10.0),
                   //color: const Color.fromARGB(255, 233, 233, 233),
                   color: Theme.of(context).cardColor,
+                  // Theme.of(context) accede al tema activo de la app en ese momento, ya sea lightTheme o darkTheme.
+                  // Y .cardColor es una propiedad del tema que devuelve el color asignado para tarjetas y contenedores.
 
                 ),
                 child: Row(

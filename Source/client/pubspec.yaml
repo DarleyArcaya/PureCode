@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.6.0
+  shared_preferences: ^2.5.5
   url_launcher: ^6.3.2
   window_manager: ^0.3.7 # Agrega esta línea para incluir la dependencia window_manager
 
