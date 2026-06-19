@@ -35,7 +35,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
   // STEP 3: Configure window properties
   WindowOptions windowOptions = WindowOptions(
     // Initial window size (width x height in pixels)
-    size: const Size(800, 800),
+    size: Size(800, 800),
     
     // Centers the window on screen when opening
     center: true,
@@ -53,8 +53,8 @@ void main() async {  // 'async' allows us to use 'await' inside this function
     title: 'PureCode',
 
     // Control windows size limits 
-    maximumSize: const Size(800, 800),
-    minimumSize: const Size(800, 800),
+    //maximumSize: const Size(800, 800),
+    //minimumSize: const Size(800, 800),
 
     
     // OTHER OPTIONS YOU CAN ADD:
