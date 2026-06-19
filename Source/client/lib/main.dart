@@ -13,7 +13,7 @@ Process? backendProcess; // Variable global para almacenar el proceso del backen
 
 
 void main() async {  // 'async' allows us to use 'await' inside this function
-
+  WidgetsFlutterBinding.ensureInitialized();
   // Parte de la logica que usamos para guardar el tema oscuro o blanco en el disco y no en la memoria
   final prefs = await SharedPreferences.getInstance(); // Variable global para almacenar las preferencias del usuario
   bool savedTheme = prefs.getBool('isDarkMode') ?? false; // Variable global para almacenar si el usuario
@@ -24,7 +24,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
   
   // STEP 1: Initialize Flutter before using plugins
   // Required when using native plugins before runApp()
-  WidgetsFlutterBinding.ensureInitialized();
+  //////WidgetsFlutterBinding.ensureInitialized();///////
   
   // STEP 2: Initialize the window manager
   // Prepares window_manager to control the window
