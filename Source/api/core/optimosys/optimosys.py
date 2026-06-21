@@ -66,8 +66,10 @@ def optimization_system():
         print(f'Cleaning: {path}')
         clear_folder(path)
 
-ensure_admin()
-optimization_system()
+if __name__ == "__main__":
+
+    ensure_admin()
+
             
 
 

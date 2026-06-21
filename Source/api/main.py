@@ -138,6 +138,7 @@ LOGGING_CONFIG = {
 # STEP 3: SERVER BOOT (Clean and direct)
 # =====================================================================
 if __name__ == "__main__":
+    
     # 2. SEGUNDO: Ahora que las rutas están perfectas, encendemos el servidor de Uvicorn
     # run the FastAPI app using uvicorn in a local way
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=False, log_config=LOGGING_CONFIG) 
