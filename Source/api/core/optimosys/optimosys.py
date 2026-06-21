@@ -1,81 +1,73 @@
-import platform
-import os
-import shutil
-def optimization_system():
+import ctypes, sys, os, shutil, platform
 
-    # This is what we are deleting for optimize windows
-    windows_optimization_1 = os.environ.get('TEMP')
-    windows_optimization_2 = r"C:\Windows\Temp"
-    windows_optimization_3 = r"C:\Windows\Prefetch"
-    
+# Function to check if the current user is an administrator on Windows
+#Esa función verifica si el proceso actual tiene permisos de administrador en Windows.
 
-    # This is what we are deleting for optimize macos
-    macos_optimization_1 = os.path.expanduser('~/Library/Caches')
-    macos_optimization_2 = os.path.expanduser('~/Library/Logs')
-    macos_optimization_3 = "/Library/Caches"
-    macos_optimization_4 = "/Library/Logs"
-    
+def is_admin():
+    try:
+        return bool(ctypes.windll.shell32.IsUserAnAdmin())
+    except:
+        return False
 
-
-
-
+# Function to ensure the current process is running with administrative privileges on Windows
+# Funcion para asegurarse que el actual proceso corre con permisos de administrador en Windows
+def ensure_admin():
     system = platform.system()
-    if system == "Windows":
-        
-        if os.path.exists(windows_optimization_1):
+    
+    if system == 'Windows':
+        if not is_admin():
+            print("ERROR: Run VS Code as administrator.")
+            sys.exit()
+        else:
+            print("Running as admin.")
+    
+    elif system == 'Darwin':
+        if os.geteuid() != 0:  # This is for get admin permisson on MacOS
+            print("ERROR: Run with sudo on Mac.")
+            sys.exit()
+        else:
+            print("Running as admin.")
 
-            try:
-                shutil.rmtree(windows_optimization_1) # delete this folder
-                os.makedirs(windows_optimization_1) # create the same folder but empty
-            except Exception:
-                print('Something was wrong while deleting the folder')
+def clear_folder(path):
+    if not path or not os.path.exists(path):
+        print("Path does not exist or is empty.")
+        return
+    for item in os.scandir(path):
+        try:
+            if item.is_dir():
+                shutil.rmtree(item.path)
+            else:
+                os.remove(item.path)
+        except Exception as e:
+            print(f"Ignoring {item.path}: {e}")
+    print(f"Folder {path} cleaned.")
 
-        
-        if os.path.exists(windows_optimization_2):
-            try:
-                shutil.rmtree(windows_optimization_2)
-                os.makedirs(windows_optimization_2)
-            except Exception:
-                print('Something was wrong while deleting the folder')
-        
-        if os.path.exists(windows_optimization_3):
-            try:
-                shutil.rmtree(windows_optimization_3)
-                os.makedirs(windows_optimization_3)
-            except Exception:
-                print('Something was wrong while deleting the folder')
-        
-        print("Windows Optimization completed successfully.")
+def optimization_system():
+    system = platform.system()
 
-    elif system == "Darwin":
-        
-        if os.path.exists(macos_optimization_1):
+    if system == 'Windows':
+        paths = [
+            os.environ.get('TEMP'),
+            r"C:\Windows\Temp",
+            r"C:\Windows\Prefetch"
+        ]
+    elif system == 'Darwin':
+        paths = [
+            os.path.expanduser('~/Library/Caches'),
+            os.path.expanduser('~/Library/Logs'),
+            "/Library/Caches",
+            "/Library/Logs",
+        ]
+    else:
+        print('Unsupported operating system')
+        return
+    
+    for path in paths:
+        print(f'Cleaning: {path}')
+        clear_folder(path)
 
-            try:
-                shutil.rmtree(macos_optimization_1) # delete this folder
-                os.makedirs(macos_optimization_1) # create the same 
-            except Exception:
-                print('Something was wrong while deleting the folder')
+ensure_admin()
+optimization_system()
+            
 
-        if os.path.exists(macos_optimization_2):
-            try:
-                shutil.rmtree(macos_optimization_2)
-                os.makedirs(macos_optimization_2)
-            except Exception:
-                print('Something was wrong while deleting the folder')
-        
-        if os.path.exists(macos_optimization_3):
-            try:
-                shutil.rmtree(macos_optimization_3)
-                os.makedirs(macos_optimization_3)
-            except Exception:
-                print('Something was wrong while deleting the folder')
-        
-        if os.path.exists(macos_optimization_4):
-            try:
-                shutil.rmtree(macos_optimization_4)
-                os.makedirs(macos_optimization_4)
-            except Exception:
-                print('Something was wrong while deleting the folder')
-        
-        print("MacOs Optimization completed succesfully")
+

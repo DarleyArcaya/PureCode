@@ -112,7 +112,7 @@ def return_pip_caches():
     result = pip_caches.clear_pip_caches()
     return 'Function is working correctly [remove pip caches]', result
 
-@app.get('/optimization_system')
+@app.get('/optimization')
 def return_optimization_system():
     result = optimosys.optimization_system()
     return 'Function is working correctly [remove optimization system]', result
