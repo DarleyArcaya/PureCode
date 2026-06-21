@@ -28,6 +28,8 @@ def ensure_admin():
         else:
             print("Running as admin.")
 
+# Function to clear a folder by removing all its contents
+# Function para limpiar una carpeta para remover todo su contenido
 def clear_folder(path):
     if not path or not os.path.exists(path):
         print("Path does not exist or is empty.")
