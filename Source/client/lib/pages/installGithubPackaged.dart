@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:purecode/pages/installGithubPackaged.dart';
+import 'package:purecode/pages/optimize_pc.dart';
 import 'homepage.dart';
-
-class OptimizeWindow extends StatefulWidget {
-  const OptimizeWindow({super.key});
+class InstallGitPackaged extends StatefulWidget {
+  const InstallGitPackaged({super.key});
 
   @override
-  State<OptimizeWindow> createState() => _MyWidgetState();
+  State<InstallGitPackaged> createState() => _InstallGitPackagedState();
 }
 
-class _MyWidgetState extends State<OptimizeWindow> {
-  int index = 1;
+class _InstallGitPackagedState extends State<InstallGitPackaged> {
+  int index = 2;
   @override
   Widget build(BuildContext context) {
-    
     
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
-        automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icono para virar en las paginas
-
-        titleTextStyle: const TextStyle(
+        automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icon
+         titleTextStyle: const TextStyle(
           color: Color.fromARGB(255, 234, 235, 238),
           fontSize: 24,
           fontWeight: FontWeight.bold,
@@ -35,22 +32,21 @@ class _MyWidgetState extends State<OptimizeWindow> {
             backgroundColor: const Color(0xFF0F172A),
             selectedIndex: index,
             onDestinationSelected: (int index) {
+              
               if (index == 0) {
                 Navigator.pushReplacement(
                   context, 
                   MaterialPageRoute(builder: (context) => const Homepage()),
                 );
               }
-
               if (index == 1) {
-                // This is optimize pc
-              }
-              
-              if (index == 2) {
                 Navigator.pushReplacement(
                   context, 
-                  MaterialPageRoute(builder: (context) => const InstallGitPackaged()),
+                  MaterialPageRoute(builder: (context) => const OptimizeWindow()),
                 );
+              }
+              if (index == 2) {
+                // This is installGithubPackaged
               }
             },
             indicatorColor: Colors.white,
@@ -71,8 +67,17 @@ class _MyWidgetState extends State<OptimizeWindow> {
               )
             ],
           ),
+          Expanded(
+            child: Center(
+              child: Text("Future Update", style: TextStyle(fontSize: 60, color: Colors.blue, fontWeight: FontWeight.bold)),
+
+            ),
+            )
         ],
-      ),
-    );
+        
+        )
+      );
+
+    
   }
 }

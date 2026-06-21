@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http; // This is for connect api with flutter
 import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
 import 'optimize_pc.dart';
 import 'package:purecode/helpers/theme_controller.dart';
-
+import 'installGithubPackaged.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -17,7 +17,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
-  final int _index = 0; // this variable goes in NavigationRail
+  final int _index = 0; // this variable goes in NavigationRail, this variable cannot goes inside the Widget build method because it's a state variable and cannot be changed
 
   // State variables to track which caches are selected for cleaning
   bool gradleCaches = false;
@@ -205,13 +205,23 @@ class _HomepageState extends State<Homepage> {
             backgroundColor: const Color(0xFF0F172A),
             selectedIndex: _index,
             onDestinationSelected: (int index) {
+              if (index == 0) {
+                // This is home
+              }
               if (index == 1) {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context, 
                   MaterialPageRoute(builder: (context) => OptimizeWindow())
                   );
               }
-              
+              if (index == 2) {
+                Navigator.pushReplacement(
+                  context, 
+                  MaterialPageRoute(builder:(context) => InstallGitPackaged())
+                  );
+
+              }
+            
             },
             indicatorColor: Colors.white,
             unselectedIconTheme: IconThemeData(color: Colors.white), // This is for give a color to unselected Icons
@@ -226,6 +236,10 @@ class _HomepageState extends State<Homepage> {
               NavigationRailDestination(
                 icon: Icon(Icons.bolt),
                 label: Text('Optimize Pc', style: TextStyle(fontSize: 16, color: Colors.white))
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.download_rounded),
+                label: Text("Install GitHub" "\n" "Packaged", style: TextStyle(fontSize: 16, color: Colors.white))
               )
             ],
           ),
