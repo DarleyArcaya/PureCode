@@ -71,7 +71,29 @@ class _MyWidgetState extends State<OptimizeWindow> {
               )
             ],
           ),
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    height: 100,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Theme.of(context).cardColor
+                    ),
+                    child: Text("You will be able to optimize your system just with one click."  "\nWorking: Windows and MacOS.",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    )
+                  )
+
+                )
+              ],
+            )
+          )
         ],
+        
       ),
     );
   }
