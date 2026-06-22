@@ -69,7 +69,7 @@ class _InstallGitPackagedState extends State<InstallGitPackaged> {
           ),
           Expanded(
             child: Center(
-              child: Text("Future Update", style: TextStyle(fontSize: 60, color: Colors.blue, fontWeight: FontWeight.bold)),
+              child: Text("Future Update", style: TextStyle(fontSize: 40, color: Colors.blue, fontWeight: FontWeight.bold)),
 
             ),
             )
