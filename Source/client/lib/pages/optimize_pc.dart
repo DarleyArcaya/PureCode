@@ -75,7 +75,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(10),
                   child: Container(
                     height: 100,
                     width: 400,
@@ -88,10 +88,29 @@ class _MyWidgetState extends State<OptimizeWindow> {
                     )
                   )
 
+                ),
+
+                SizedBox(height: 10),
+
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    height: 200,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Theme.of(context).cardColor
+                    ),
+                    child: Text('Here will appear if the machine is optimized or need to be optimized.')
+                  )
                 )
+                
               ],
             )
-          )
+          ),
+
+          
+          
         ],
         
       ),

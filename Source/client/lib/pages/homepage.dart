@@ -116,7 +116,7 @@ class _HomepageState extends State<Homepage> {
                         }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Something wents wront"),
+                            SnackBar(content: Text("Error connecting to the server"),
                             backgroundColor: Colors.red,
                             )
                           );
