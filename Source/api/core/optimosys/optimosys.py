@@ -26,7 +26,7 @@ def ensure_admin():
             print("ERROR: Run with sudo on Mac.")
             sys.exit()
         else:
-            print("Running as admin.")
+            print("Runb ning as admin.")
 
 # Function to clear a folder by removing all its contents
 # Function para limpiar una carpeta para remover todo su contenido
