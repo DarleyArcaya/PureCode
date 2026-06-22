@@ -36,16 +36,20 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text('PureCode'),
         automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icono para virar en las paginas
+        
         titleTextStyle: const TextStyle(
           color: Color.fromARGB(255, 234, 235, 238),
           fontSize: 24,
           fontWeight: FontWeight.bold,
+
           
         ),
+        
         backgroundColor: const Color(0xFF0F172A),
         iconTheme: IconThemeData(color: Colors.white), // this is for give a color to icon themes in appbar
-      ),
 
+      ),
+    
       endDrawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -289,7 +293,7 @@ class _HomepageState extends State<Homepage> {
                     ),
 
                     child: Image.asset(
-                    'assets/cleanpc/mac.png', 
+                    'assets/cleanpc/storage.png', 
                     height: 100, 
                     width: 100, 
                     fit: BoxFit.contain
@@ -299,67 +303,16 @@ class _HomepageState extends State<Homepage> {
                 ),
                     
                     
-                const SizedBox(width: 50), // Espacio entre las dos imágenes // Space between the two images
+                const SizedBox(width: 150), // Espacio entre las dos imágenes // Space between the two images
 
-                 // Cambia el cursor a una mano para indicar que es interactivo
-                  InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete WINDOWS CACHES
+                
 
-                    onTap: () async {
-                      
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Your Windows PC is Optimized"),
-                        backgroundColor: Colors.blue
-                          )
-                        );
-                      },
-
-                  child: MouseRegion(
-                      cursor: SystemMouseCursors.click, // Cambia el cursor a una mano para indicar que es interactivo
-                  
-                  child: Container(
-                    padding: const EdgeInsets.all(10), // Padding para darle margen interno // Padding for internal margin
-                    decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10), // Importante para que el ripple se vea bien // Important for the ripple effect to look good
-                    boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 0)], // This boxShadow is used to create a shadow effect around
-                  ),
-
-                  child: Image.asset(
-                  'assets/cleanpc/win.png', 
-                  height: 100, 
-                  width: 100, 
-                  fit: BoxFit.contain
-                           ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
 
             ),
             
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Container(
-                width: 300,
-                height: 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  //color: const Color.fromARGB(255, 233, 233, 233),
-                  color: Theme.of(context).cardColor,
-                  // Theme.of(context) accede al tema activo de la app en ese momento, ya sea lightTheme o darkTheme.
-                  // Y .cardColor es una propiedad del tema que devuelve el color asignado para tarjetas y contenedores.
-
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Optimize Mac", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
-                    Text("Optimize Windows", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue))
-                  ]
-                ),
-              ),
-            ),
 
             Expanded(
             child: Padding(
