@@ -146,7 +146,6 @@ class _HomepageState extends State<Homepage> {
                       
                       children: [
                         Text("Version: 0.9.0", style: TextStyle(
-                          color: Colors.black,
                          fontSize: 20, fontWeight: FontWeight.bold), 
                          textAlign: TextAlign.center
                          ),
