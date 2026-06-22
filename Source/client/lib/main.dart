@@ -56,6 +56,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
     maximumSize: const Size(550, 800),
     minimumSize: const Size(550, 800),
 
+    alwaysOnTop: true,
     
     // OTHER OPTIONS YOU CAN ADD:
     // minimumSize: const Size(400, 300),  // Minimum size (can't make smaller)
@@ -69,6 +70,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();   // Makes the window visible
     await windowManager.focus();  // Puts focus on the window
+    await windowManager.setAlignment(Alignment.bottomRight);  // Aligns the window to the bottom right corner
   });
 
   // STEP 5: Start the Flutter application
