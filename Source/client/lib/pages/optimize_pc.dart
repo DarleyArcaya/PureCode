@@ -11,6 +11,37 @@ class OptimizeWindow extends StatefulWidget {
 
 class _MyWidgetState extends State<OptimizeWindow> {
   int index = 1;
+
+  
+  // Variable that will control if we are charging or not
+  bool _isLoading = false;
+
+  Future <void> optimizePC() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    debugPrint('Optimizing PC');
+
+    // Where wil go the real logic with API
+     // Usamos Future.delayed para simular que el proceso tarda 3 segundos.
+    await Future.delayed(Duration(seconds: 3));
+    debugPrint('Optimization Complated');
+
+    setState(() {
+      _isLoading = false; // Set the loading state back to fals
+    });
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Optimization Complated'),
+        backgroundColor: Colors.blue, // Green color for the snackbar
+
+        behavior: SnackBarBehavior.floating,
+        )
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -53,6 +84,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                 );
               }
             },
+
             indicatorColor: Colors.white,
              unselectedIconTheme: IconThemeData(color: Colors.white),
             selectedIconTheme: const IconThemeData(color: Colors.blue),
@@ -73,7 +105,18 @@ class _MyWidgetState extends State<OptimizeWindow> {
           ),
           Expanded(
             child: Column(
-              children: [
+              children: <Widget>[
+                if (_isLoading)
+                  const Padding(
+                    padding: EdgeInsetsGeometry.all(20.0),
+                    child: LinearProgressIndicator(
+                      backgroundColor: Color(0xFF1E293B),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                      minHeight: 6,
+                    ),
+                  ),
+                
+
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
@@ -83,9 +126,22 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       borderRadius: BorderRadius.circular(10.0),
                       color: Theme.of(context).cardColor
                     ),
-                    child: Text("You will be able to optimize your system just with one click."  "\nWorking: Windows and MacOS.",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    )
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero
+                        )
+                      ),
+                       onPressed:() async {
+                         await optimizePC(); // Call the function to optimize the
+                         
+                         
+                       },
+                       child: const Text('Optimize'),
+                    ),
+                    
                   )
 
                 ),
@@ -106,7 +162,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
                 )
                 
               ],
-            )
+            ),
+            
           ),
 
           
