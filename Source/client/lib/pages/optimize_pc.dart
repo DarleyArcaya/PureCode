@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:purecode/pages/installGithubPackaged.dart';
+import 'package:purecode/services/api_services.dart';
 import 'homepage.dart';
+import 'package:http/http.dart' as http;
 
 class OptimizeWindow extends StatefulWidget {
   const OptimizeWindow({super.key});
@@ -16,30 +18,31 @@ class _MyWidgetState extends State<OptimizeWindow> {
   // Variable that will control if we are charging or not
   bool _isLoading = false;
 
-  Future <void> optimizePC() async {
+   Future <void> optimizePC() async {
     setState(() {
       _isLoading = true;
     });
 
     debugPrint('Optimizing PC');
-
+   
+ 
     // Where wil go the real logic with API
      // Usamos Future.delayed para simular que el proceso tarda 3 segundos.
     await Future.delayed(Duration(seconds: 3));
     debugPrint('Optimization Complated');
-
+    
     setState(() {
       _isLoading = false; // Set the loading state back to fals
     });
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Optimization Complated'),
+        SnackBar(content: Text('Optimization Completed!'),
         backgroundColor: Colors.blue, // Green color for the snackbar
-
         behavior: SnackBarBehavior.floating,
         )
       );
-    }
+
+    } 
   }
 
   @override
@@ -136,8 +139,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       ),
                        onPressed:() async {
                          await optimizePC(); // Call the function to optimize the
-                         
-                         
+                         await ApiServices.optimizeSystem(); // Call the function to optimize the system
+
                        },
                        child: const Text('Optimize'),
                     ),
