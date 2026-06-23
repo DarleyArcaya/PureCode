@@ -13,7 +13,7 @@ Process? backendProcess; // Variable global para almacenar el proceso del backen
 
 
 void main() async {  // 'async' allows us to use 'await' inside this function
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); // macOs need this here for work....
   // Parte de la logica que usamos para guardar el tema oscuro o blanco en el disco y no en la memoria
   final prefs = await SharedPreferences.getInstance(); // Variable global para almacenar las preferencias del usuario
   bool savedTheme = prefs.getBool('isDarkMode') ?? false; // Variable global para almacenar si el usuario
