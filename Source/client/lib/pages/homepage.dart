@@ -27,7 +27,7 @@ class _HomepageState extends State<Homepage> {
   bool macCaches = false;
   bool winCaches = false;
 
-
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,7 @@ class _HomepageState extends State<Homepage> {
                         }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Something wents wront"),
+                            SnackBar(content: Text("Error connecting to the server"),
                             backgroundColor: Colors.red,
                             )
                           );
@@ -146,7 +146,6 @@ class _HomepageState extends State<Homepage> {
                       
                       children: [
                         Text("Version: 0.9.0", style: TextStyle(
-                          color: Colors.black,
                          fontSize: 20, fontWeight: FontWeight.bold), 
                          textAlign: TextAlign.center
                          ),

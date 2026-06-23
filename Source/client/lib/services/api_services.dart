@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert'; // this library is in charge of converting text to JSON in the check_update function
 
@@ -82,6 +83,17 @@ class ApiServices {
 
   } 
   
+ }
+
+ static Future<bool> optimizeSystem() async {
+  try {
+    final optimization = await http.get(Uri.parse('http://127.0.0.1:8000/optimization'));
+    return optimization.statusCode == 200;
+
+  } catch (e) {
+    debugPrint("There is an error with optimization: $e");
+    return false;
+  }
  }
 
 }
