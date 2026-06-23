@@ -32,7 +32,8 @@ def clear_folder(path):
     if not path or not os.path.exists(path):
         print("Path does not exist or is empty.")
         return
-    for item in os.scandir(path):
+    for item in os.scandir(path): # os.scandir is for iterate over files and directories in a directory
+                                  # os.scandir sirve para iterar sobre archivos y directorios en un directorio.
         try:
             if item.is_dir():
                 shutil.rmtree(item.path)
