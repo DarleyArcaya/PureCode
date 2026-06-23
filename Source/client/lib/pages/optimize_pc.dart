@@ -140,7 +140,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                        onPressed:() async {
                          await optimizePC(); // Call the function to optimize the
                          await ApiServices.optimizeSystem(); // Call the function to optimize the system
-
+                        
                        },
                        child: const Text('Optimize'),
                     ),
@@ -160,7 +160,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       borderRadius: BorderRadius.circular(10.0),
                       color: Theme.of(context).cardColor
                     ),
-                    child: Text('Here will appear if the machine is optimized or need to be optimized.')
+                    child: Text('Last Optimized: '),
                   )
                 )
                 
