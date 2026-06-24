@@ -297,16 +297,21 @@ class _HomepageState extends State<Homepage> {
                     width: 100, 
                     fit: BoxFit.contain
                       ),
+
+
                     ),
+                    
                   ),
                 ),
                     
                     
-                const SizedBox(width: 150), // Espacio entre las dos imágenes // Space between the two images
+                const SizedBox(width: 10), // Espacio entre las dos imágenes // Space between the two images
+                  
+                  Expanded(child: Text('You can save', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
 
                 
-
                   ],
+                  
                 ),
               ),
 

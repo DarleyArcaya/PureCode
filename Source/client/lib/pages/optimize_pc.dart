@@ -14,9 +14,12 @@ class OptimizeWindow extends StatefulWidget {
 class _MyWidgetState extends State<OptimizeWindow> {
   int index = 1;
 
+
   
   // Variable that will control if we are charging or not
   bool _isLoading = false;
+
+
 
    Future <void> optimizePC() async {
     setState(() {
