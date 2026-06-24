@@ -307,7 +307,7 @@ class _HomepageState extends State<Homepage> {
                     
                 const SizedBox(width: 10), // Espacio entre las dos imágenes // Space between the two images
                   
-                  Expanded(child: Text('You can save', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+                  Expanded(child: Text('You can save' '\nGBs HERE', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
 
                 
                   ],
