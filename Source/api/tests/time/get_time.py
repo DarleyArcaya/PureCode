@@ -1,12 +1,29 @@
 import time
-import datetime
+from datetime import datetime
+import json
+import pathlib
+
+FILE = pathlib.Path(__file__).parent / 'data.json' # This is for create the data.json in the same folder.
 
 
-ts = time.time()
-dt = datetime.fromtimestamp(ts)
+now = time.time()
+datatime = datetime.fromtimestamp(now)
 
-date = dt.datetimes("The last optimization was: -> Day %d / Month %m")
-print(date)
+dt = datatime.strftime("Year: %Y, Month: %m, Day: %d")
+print(dt)
 
-    
+
+data = {
+    "last_optimization_date" : dt,
+    "last_optimization_time": datatime.strftime("%H:%M:%S"),
+    "last_optimization_status": "Optimized",
+}
+
+try: 
+    with open(FILE, 'w') as f:
+        json.dump(data, f, indent=4)
+        print('Data written successfully')
+except Exception as e:
+    print("Error writing data to file")
+   
 
