@@ -26,5 +26,7 @@ def last_optimization_date():
         with open(FILE, 'w') as f:
             json.dump(data, f, indent=4)
             print('Data written successfully')
+            
     except Exception as e:
         print('Error writing data to file')
+
