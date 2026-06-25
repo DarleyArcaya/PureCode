@@ -2,7 +2,6 @@ import sys
 import os
 import requests
 
-
 # =====================================================================
 # PASO 0: PARCHE CRÍTICO DE INICIALIZACIÓN (Milisegundo Cero) 
 # STEP 0: CRITICAL INITIALIZATION PATCH (Zero Millisecond)
@@ -29,10 +28,9 @@ if getattr(sys, 'frozen', False):
 # =====================================================================
 
 from fastapi import FastAPI
-from core import gradle_caches, android_caches, flutter_caches, pip_caches
+from core.caches_to_delete import android_caches, flutter_caches, gradle_caches, pip_caches
 from core.optimosys import optimosys
 from core.get_time import get_time_optimization
-
 import uvicorn
 
 
