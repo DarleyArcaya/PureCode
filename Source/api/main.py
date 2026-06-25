@@ -31,6 +31,7 @@ if getattr(sys, 'frozen', False):
 from fastapi import FastAPI
 from core import gradle_caches, android_caches, flutter_caches, pip_caches
 from core.optimosys import optimosys
+from core.get_time import get_time_optimization
 
 import uvicorn
 
@@ -116,6 +117,11 @@ def return_pip_caches():
 def return_optimization_system():
     result = optimosys.optimization_system()
     return 'Function is working correctly [remove optimization system]', result
+
+@app.get('/last_optimization')
+def return_last_optimization_date():
+    result = get_time_optimization.get_last_optimization_date()
+    return 'Function is working correctly [get last optimization]', result
 
 
 

@@ -18,7 +18,7 @@ data = {
     "last_optimization_time": datatime.strftime("%H:%M:%S"),
     "last_optimization_status": "Optimized",
 }
-
+ 
 try: 
     with open(FILE, 'w') as f:
         json.dump(data, f, indent=4)
