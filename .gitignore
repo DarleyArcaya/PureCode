@@ -3,7 +3,7 @@
 **/*.py[cod]
 **/.venv/
 .vscode/
-
+**/.pytest_cache
 # Developers
 Release/
 
