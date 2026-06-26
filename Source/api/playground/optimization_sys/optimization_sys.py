@@ -3,7 +3,7 @@ import ctypes, sys, os, shutil, platform
 # Function to check if the current user is an administrator on Windows
 #Esa función verifica si el proceso actual tiene permisos de administrador en Windows.
 
-def test_is_admin():
+def is_admin():
     try:
         return bool(ctypes.windll.shell32.IsUserAnAdmin())
     except:
@@ -11,11 +11,11 @@ def test_is_admin():
 
 # Function to ensure the current process is running with administrative privileges on Windows
 # Funcion para asegurarse que el actual proceso corre con permisos de administrador en Windows
-def test_ensure_admin():
+def ensure_admin():
     system = platform.system()
     
     if system == 'Windows':
-        if not test_is_admin():
+        if not is_admin():
             print("ERROR: Run VS Code as administrator.")
             sys.exit()
         else:
@@ -28,7 +28,7 @@ def test_ensure_admin():
         else:
             print("Running as admin.")
 
-def test_clear_folder(path):
+def clear_folder(path):
     if not path or not os.path.exists(path):
         print("Path does not exist or is empty.")
         return
@@ -43,7 +43,7 @@ def test_clear_folder(path):
             print(f"Ignoring {item.path}: {e}")
     print(f"Folder {path} cleaned.")
 
-def test_optimization_system():
+def optimization_system():
     system = platform.system()
 
     if system == 'Windows':
@@ -65,10 +65,10 @@ def test_optimization_system():
     
     for path in paths:
         print(f'Cleaning: {path}')
-        test_clear_folder(path)
+        clear_folder(path)
 
-test_ensure_admin()
-test_optimization_system()
+ensure_admin()
+optimization_system()
             
 
 
