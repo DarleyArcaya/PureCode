@@ -4,6 +4,7 @@
 **/.venv/
 .vscode/
 **/.pytest_cache
+***/.pytest_cache
 # Developers
 Release/
 
