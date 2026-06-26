@@ -1,7 +1,7 @@
 import os
 import shutil
 
-def removing(cache_path):
+def test_removing(cache_path):
     full_path_cache = os.path.expanduser(cache_path)
 
     if os.path.exists(full_path_cache):
@@ -10,6 +10,6 @@ def removing(cache_path):
     else:
         print('no cache to remove')
 
-removing('~/.gradle/caches/')
+test_removing('~/.gradle/caches/')
 
 

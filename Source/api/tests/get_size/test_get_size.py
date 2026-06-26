@@ -1,9 +1,9 @@
 import os 
 
-def getting_size(file):
+def test_getting_size(file):
     for file in os.listdir():
         print(os.path.getsize(file))
         print('The file size is {path}')
 
-getting_size('~/.gradle/caches/')
+test_getting_size('~/.gradle/caches/')
     
