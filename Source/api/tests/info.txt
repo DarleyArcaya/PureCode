@@ -1,0 +1,29 @@
+Aqui en esta carpeta para que funcione, nombramos cada archivo .py al inicio con test
+
+por ejemplo, si el nombre es ensure_admin, el archivo se llamara, test_ensure_admin, luego podemos ejecutarlo con pytest
+
+para ejecutarlo con pytest, debemos importar pytest, y tambien llamar a la función que queremos probar en este caso de ejemplo, ensure_admin()
+
+
+import pytest
+
+luego, una ves tenemos la funcion, creada que debe llamarse con test al inicio igual
+
+Ejm:
+
+def test_ensure_admin():
+    
+
+abajo de la funcion debemos usart "assert" para verificar si el resultado es correcto o no
+
+ejemplo: 
+
+
+
+import pytest
+from core.optimosys import ensure_admin
+
+def test_ensure_admin():
+    assert ensure_admin()
+
+    
