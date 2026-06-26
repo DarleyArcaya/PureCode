@@ -26,4 +26,7 @@ from core.optimosys import ensure_admin
 def test_ensure_admin():
     assert ensure_admin()
 
-    
+
+IMPORTANT!!!!!!
+
+debes agregar un __init__.py en la carpeta core, o donde sea que guardes las funciones oficiales de tu programa
