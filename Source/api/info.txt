@@ -1,0 +1,3 @@
+for open api in administrator mode use:
+
+sudo uvicorn main:app --reload
