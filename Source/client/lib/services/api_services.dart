@@ -96,4 +96,13 @@ class ApiServices {
   }
  }
 
+ static Future<bool> lastOptimization() async {
+  try {
+    final lastOptimization = await http.get(Uri.parse('http://127.0.0.1:8000/last_optimization'));
+    return lastOptimization.statusCode == 200;
+  } catch (e) {
+    debugPrint('There is an error with last optimization: $e');
+    return false;
+  }
+ }
 }
