@@ -1,3 +1,3 @@
-for open api in administrator mode use:
+if users wannts to open api in administrator mode use in MacOS:
 
 sudo uvicorn main:app --reload
