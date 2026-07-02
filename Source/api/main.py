@@ -119,7 +119,9 @@ def return_optimization_system():
 @app.get('/last_optimization')
 def return_last_optimization_date():
     result = get_time_optimization.last_optimization_date()
-    return 'Function is working correctly [last optimization date]', result
+    return result
+        
+    
 
 
 

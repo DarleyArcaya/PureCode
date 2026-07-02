@@ -96,13 +96,27 @@ class ApiServices {
   }
  }
 
- static Future<bool> lastOptimization() async {
+ static Future<String> lastOptimization() async {
   try {
     final lastOptimization = await http.get(Uri.parse('http://127.0.0.1:8000/last_optimization'));
-    return lastOptimization.statusCode == 200;
+    if (lastOptimization.statusCode == 200) {
+     final data = json.decode(lastOptimization.body);
+  
+      final date = data['last_optimization_date'].toString(); // we use toString() to convert the date and time to string format for display purposes
+      final time = data['last_optimization_time'].toString();
+      final status = data['last_optimization_status'].toString();
+      
+  return "\n$date | \n$time |\n($status)";
+      
+    } else {
+      debugPrint('Failed to fetch last optimization: ${lastOptimization.statusCode}');
+      return 'Server not connected';
+    }
+
   } catch (e) {
-    debugPrint('There is an error with last optimization: $e');
-    return false;
+    debugPrint('EXPLOTION IN FLUTTER: $e');
+    return 'Processing Error';
+    
   }
  }
 }

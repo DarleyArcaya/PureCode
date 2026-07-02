@@ -20,13 +20,13 @@ def last_optimization_date():
         "last_optimization_time": datatime.strftime("%H:%M:%S"),
         "last_optimization_status": "Optimized",
     }
-
+    
 
     try:
         with open(FILE, 'w') as f:
             json.dump(data, f, indent=4)
             print('Data written successfully')
-            
+        return data
     except Exception as e:
         print('Error writing data to file')
 

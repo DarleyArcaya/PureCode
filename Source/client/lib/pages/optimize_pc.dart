@@ -3,7 +3,6 @@ import 'package:purecode/pages/installGithubPackaged.dart';
 import 'package:purecode/services/api_services.dart';
 import 'homepage.dart';
 
-
 class OptimizeWindow extends StatefulWidget {
   const OptimizeWindow({super.key});
 
@@ -13,57 +12,52 @@ class OptimizeWindow extends StatefulWidget {
 
 class _MyWidgetState extends State<OptimizeWindow> {
   int index = 1;
-
-
   
-  // Variable that will control if we are charging or not
+  // Variable que controla la barra de carga superior
   bool _isLoading = false;
 
+  // Esta es la variable local que pintará el texto en la pantalla
+  String textLastOptimizationTime = "Loading...";
 
-
-   Future <void> optimizePC() async {
+  Future<void> optimizePC() async {
     setState(() {
       _isLoading = true;
     });
 
     debugPrint('Optimizing PC');
    
- 
-    // Where wil go the real logic with API
-     // Usamos Future.delayed para simular que el proceso tarda 3 segundos.
-    await Future.delayed(Duration(seconds: 3));
-    debugPrint('Optimization Complated');
+    // Simulamos que el proceso tarda 3 segundos antes de completarse
+    await Future.delayed(const Duration(seconds: 3));
+    debugPrint('Optimization Completed');
     
     setState(() {
-      _isLoading = false; // Set the loading state back to fals
+      _isLoading = false; 
     });
+    
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Optimization Completed!'),
-        backgroundColor: Colors.blue, // Green color for the snackbar
-        behavior: SnackBarBehavior.floating,
+        const SnackBar(
+          content: Text('Optimization Completed!'),
+          backgroundColor: Colors.blue, 
+          behavior: SnackBarBehavior.floating,
         )
       );
-
     } 
   }
-
+  
   @override
   Widget build(BuildContext context) {
-    
-    
     return Scaffold(
       appBar: AppBar(
         title: const Text('PureCode'),
-        automaticallyImplyLeading: false, // false to hide the leading icon / No muestra el icono para virar en las paginas
-
+        automaticallyImplyLeading: false, 
         titleTextStyle: const TextStyle(
           color: Color.fromARGB(255, 234, 235, 238),
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
         backgroundColor: const Color(0xFF0F172A),
-        iconTheme: IconThemeData(color: Colors.white)
+        iconTheme: const IconThemeData(color: Colors.white)
       ),
       body: Row(
         children: [
@@ -78,11 +72,6 @@ class _MyWidgetState extends State<OptimizeWindow> {
                   MaterialPageRoute(builder: (context) => const Homepage()),
                 );
               }
-
-              if (index == 1) {
-                // This is optimize pc
-              }
-              
               if (index == 2) {
                 Navigator.pushReplacement(
                   context, 
@@ -90,9 +79,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
                 );
               }
             },
-
             indicatorColor: Colors.white,
-             unselectedIconTheme: IconThemeData(color: Colors.white),
+            unselectedIconTheme: const IconThemeData(color: Colors.white),
             selectedIconTheme: const IconThemeData(color: Colors.blue),
             destinations: const [
               NavigationRailDestination(
@@ -105,7 +93,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.download_rounded),
-                label: Text("Install GitHub" "\n" "Packaged", style: TextStyle(fontSize: 16, color: Colors.white))
+                label: Text("Install GitHub\nPackaged", style: TextStyle(fontSize: 16, color: Colors.white))
               )
             ],
           ),
@@ -114,7 +102,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
               children: <Widget>[
                 if (_isLoading)
                   const Padding(
-                    padding: EdgeInsetsGeometry.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: LinearProgressIndicator(
                       backgroundColor: Color(0xFF1E293B),
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
@@ -122,7 +110,6 @@ class _MyWidgetState extends State<OptimizeWindow> {
                     ),
                   ),
                 
-
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
@@ -136,46 +123,46 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.zero
                         )
                       ),
-                       onPressed:() async {
-                         await optimizePC(); // Call the function to optimize the
-                         await ApiServices.optimizeSystem(); // Call the function to optimize the system
+                      onPressed: () async {
                         
-                       },
-                       child: const Text('Optimize'),
+                        await optimizePC(); 
+                        
+                        String pythonRequest = await ApiServices.lastOptimization();
+                        setState(() {
+                          textLastOptimizationTime = pythonRequest;
+                        });
+                        
+                      },
+                      child: const Text('Optimize'),
                     ),
-                    
-                  )
-
+                  ),
                 ),
 
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
                     height: 200,
                     width: 400,
+                    padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       color: Theme.of(context).cardColor
                     ),
-                    child: Text('Last Optimized: '),
-                  )
-                )
-                
+                    // Lee directamente la variable local controlada por el setState de arriba
+                    child: Text(
+                      'Last Optimized: $textLastOptimizationTime')
+                    ), 
+                  ),
               ],
             ),
-            
           ),
-
-          
-          
         ],
-        
       ),
     );
   }
