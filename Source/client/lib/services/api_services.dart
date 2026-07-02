@@ -106,7 +106,7 @@ class ApiServices {
       final time = data['last_optimization_time'].toString();
       final status = data['last_optimization_status'].toString();
       
-  return "\n$date | \n$time |\n($status)";
+  return "\n✅$date  \n✅$time \n✅($status)";
       
     } else {
       debugPrint('Failed to fetch last optimization: ${lastOptimization.statusCode}');

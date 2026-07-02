@@ -17,7 +17,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
   bool _isLoading = false;
 
   // Esta es la variable local que pintará el texto en la pantalla
-  String textLastOptimizationTime = "Loading...";
+  String textLastOptimizationTime = 'Not yet optimized';
 
   Future<void> optimizePC() async {
     setState(() {
@@ -156,9 +156,10 @@ class _MyWidgetState extends State<OptimizeWindow> {
                     ),
                     // Lee directamente la variable local controlada por el setState de arriba
                     child: Text(
-                      'Last Optimized: $textLastOptimizationTime')
+                      ' $textLastOptimizationTime', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ), 
                   ),
+                )
               ],
             ),
           ),
