@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/cupertino.dart'; // This library is used for building iOS-style applications in Flutter. It provides a set of widgets and tools that follow the design principles of Apple's iOS platform, allowing developers to create apps with a native look and feel on iOS devices.
+import 'package:flutter/material.dart'; // This library is used for building Material Design applications in Flutter. It provides a comprehensive set of widgets and tools that follow Google's Material Design guidelines, enabling developers to create visually appealing and responsive apps for Android and other platforms.
+import 'package:http/http.dart' as http; // This library is used for making HTTP requests in Flutter. It provides a simple and convenient way to send GET, POST, PUT, DELETE, and other types of HTTP requests to web servers, allowing developers to interact with APIs and retrieve or send data over the internet.
 import 'dart:convert'; // this library is in charge of converting text to JSON in the check_update function
 
 /// A service class responsible for managing API communications 
@@ -105,7 +105,7 @@ class ApiServices {
       final date = data['last_optimization_date'].toString(); // we use toString() to convert the date and time to string format for display purposes
       final time = data['last_optimization_time'].toString();
       final status = data['last_optimization_status'].toString();
-      
+    
   return "\n✅$date  \n✅$time \n✅($status)";
       
     } else {
