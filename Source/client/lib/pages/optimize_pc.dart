@@ -128,7 +128,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         )
                       ),
                       onPressed: () async {
-                        
+                        await optimizePC(); // Call the optimization function
                         await ApiServices.optimizeSystem();
                          
                         
@@ -138,7 +138,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         });
                         
                       },
-                      child: const Text('Optimize'),
+                      child: const Text('Optimize', style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
