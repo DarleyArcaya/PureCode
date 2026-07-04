@@ -129,7 +129,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       ),
                       onPressed: () async {
                         
-                        await optimizePC(); 
+                        await ApiServices.optimizeSystem();
+                         
                         
                         String pythonRequest = await ApiServices.lastOptimization();
                         setState(() {

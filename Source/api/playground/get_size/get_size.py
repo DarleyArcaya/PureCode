@@ -29,6 +29,6 @@ for folder in folder_to_clean:
     if folder and os.path.exists(folder):
         size_gb = show_gb(folder)
         print(f"{folder}: {size_gb:.2f} GB")
-    else:
+    else: 
         print(f"{folder}: Path does not exist or is empty.")
 print("\nCleaning...")
