@@ -123,13 +123,14 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)
                         )
                       ),
                       onPressed: () async {
-                        
-                        await optimizePC(); 
+                        await optimizePC(); // Call the optimization function
+                        await ApiServices.optimizeSystem();
+                         
                         
                         String pythonRequest = await ApiServices.lastOptimization();
                         setState(() {
@@ -137,7 +138,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         });
                         
                       },
-                      child: const Text('Optimize'),
+                      child: const Text('Optimize', style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
