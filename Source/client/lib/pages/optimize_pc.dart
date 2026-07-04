@@ -123,8 +123,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)
                         )
                       ),
                       onPressed: () async {
