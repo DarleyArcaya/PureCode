@@ -160,6 +160,23 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       ' $textLastOptimizationTime', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ), 
                   ),
+                ),
+                const SizedBox(height: 10),
+
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    height: 200,
+                    width: 400,
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                        color: Theme.of(context).cardColor
+                    ),
+                    child: const Text(
+                      'Gb you could saved', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  )
                 )
               ],
             ),
