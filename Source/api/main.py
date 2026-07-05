@@ -1,7 +1,7 @@
 import sys
 import os
 import requests
-
+import platform
 # =====================================================================
 # PASO 0: PARCHE CRÍTICO DE INICIALIZACIÓN (Milisegundo Cero) 
 # STEP 0: CRITICAL INITIALIZATION PATCH (Zero Millisecond)
@@ -124,20 +124,29 @@ def return_last_optimization_date():
 
 @app.get('/get_size')
 def return_get_size():
-    temp_folder_size = show_gb(os.environ.get('TEMP'))
-    windows_temp_size = show_gb(r"C:\Windows\Temp")
-    windows_prefetch_size = show_gb(r"C:\Windows\Prefetch")
+    system = platform.system()
 
-    return {
-        "temp_folder_size": temp_folder_size,
-        "windows_temp_size": windows_temp_size,
-        "windows_prefetch_size": windows_prefetch_size,
-    
+    data = {
+        "temp_folder_size": 0.0,
+        "windows_temp_size": 0.0,
+        "windows_prefetch_size": 0.0,
+        "library_caches_size": 0.0,
+        "library_logs_size": 0.0,
+        "system_caches_size": 0.0,
+        "system_logs_size": 0.0
     }
 
-    
+    if platform == "Windows":
+        data["temp_folder_size"] = show_gb.get_temp_folder_size()
+        data["windows_temp_size"] = show_gb.get_windows_temp_size()
+        data["windows_prefetch_size"] = show_gb.get_windows_prefetch_size()
+    elif system == "Darwin":
+        data["library_caches_size"] = show_gb.get_library_caches_size()
+        data["library_logs_size"] = show_gb.get_library_logs_size()
+        data["system_caches_size"] = show_gb.get_system_caches_size()
+        data["system_logs_size"] = show_gb.get_system_logs_size()
 
-    
+    return data
 
 
 

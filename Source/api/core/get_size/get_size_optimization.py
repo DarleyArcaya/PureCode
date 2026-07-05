@@ -59,6 +59,7 @@ elif system == 'Darwin':
         "system_logs_size": show_gb("/Library/Logs")
     }
     
+    
 with open(FILE, 'w') as f:
     json.dump(data, f, indent=4)
     print("Data written to data.json successfully.")
