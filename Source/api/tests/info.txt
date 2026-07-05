@@ -30,3 +30,5 @@ def test_ensure_admin():
 IMPORTANT!!!!!!
 
 debes agregar un __init__.py en la carpeta core, o donde sea que guardes las funciones oficiales de tu programa
+
+ademas debes crear un archivo llamado confest.py en la raiz de tu api para crear el test
