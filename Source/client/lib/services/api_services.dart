@@ -119,4 +119,20 @@ class ApiServices {
     
   }
  }
-}
+
+ static Future<String> getGbSaved() async {
+  try {
+    final gbSaved = await http.get(Uri.parse('http://127.0.0.1:8000/get_size'));
+    if (gbSaved.statusCode == 200)  {
+      
+      
+    }
+      
+    
+
+  } catch (e) {
+    debugPrint('Error fetching GB saved: $e');
+    return 'Error fetching GB saved';
+  }
+  }
+ } 
