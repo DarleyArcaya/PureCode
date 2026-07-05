@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart'; // This library is used for building iO
 import 'package:flutter/material.dart'; // This library is used for building Material Design applications in Flutter. It provides a comprehensive set of widgets and tools that follow Google's Material Design guidelines, enabling developers to create visually appealing and responsive apps for Android and other platforms.
 import 'package:http/http.dart' as http; // This library is used for making HTTP requests in Flutter. It provides a simple and convenient way to send GET, POST, PUT, DELETE, and other types of HTTP requests to web servers, allowing developers to interact with APIs and retrieve or send data over the internet.
 import 'dart:convert'; // this library is in charge of converting text to JSON 
-
+import 'dart:io'; // This library is used for performing input and output operations in Dart. It provides classes and functions for working with files, directories, sockets, and other I/O resources, allowing developers to read from and write to the file system, handle network communication, and perform other I/O tasks in their applications.
 /// A service class responsible for managing API communications 
 /// between the Flutter frontend and the FastAPI backend.
 class ApiServices {
@@ -130,7 +130,20 @@ class ApiServices {
       final windowsTemp = data['windows_temp_size'].toString();
       final windowsPretfetch = data['windows_prefetch_size'].toString();
 
-      return "\n✅Temp Folder: $tempFolder GB  \n✅Windows Temp: $windowsTemp GB\n✅Windows Prefetch: $windowsPretfetch GB";
+      final libraryCaches = data['library_caches_size'].toString();
+      final libraryLogsCaches = data['library_logs_size'].toString();
+      final systemCaches = data['system_caches_size'].toString();
+      final systemLogs = data['system_logs_size'].toString();
+
+      if (Platform.isWindows) {
+        return "\n✅Temp Folder: $tempFolder GB  \n✅Windows Temp: $windowsTemp GB\n✅Windows Prefetch: $windowsPretfetch GB";
+
+      } else if (Platform.isMacOS) {
+        return "\n✅Library Caches: $libraryCaches GB  \n✅Library Logs: $libraryLogsCaches GB\n✅System Caches: $systemCaches GB\n✅System Logs: $systemLogs GB";
+      } else {
+        return 'Unsupported platform';
+      }
+      
       
     } else {
       debugPrint('Failed to fetch GB saved optimization: ${gbSaved.statusCode}');
