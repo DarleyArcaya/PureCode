@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http; // This is for connect api with flutter
 import 'package:url_launcher/url_launcher.dart'; // this is for launcher the url in web browser
 import 'optimize_pc.dart';
 import 'package:purecode/helpers/theme_controller.dart';
-import 'installGithubPackaged.dart';
+import 'install_github_package.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

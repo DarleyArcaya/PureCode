@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:purecode/pages/installGithubPackaged.dart';
+import 'package:purecode/pages/install_github_package.dart';
 import 'package:purecode/services/api_services.dart';
 import 'homepage.dart';
 
