@@ -2,8 +2,10 @@ import time
 from datetime import datetime
 import json
 import pathlib
+import sys 
 
-FILE = pathlib.Path(__file__).parent / 'data.json' # This is for create the data.json in the same folder.
+if sys.platform == "win32":
+    FILE = pathlib.Path(__file__).parent / 'data.json' # This is for create the data.json in the same folder.
 
 
 now = time.time()
