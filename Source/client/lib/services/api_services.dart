@@ -124,12 +124,18 @@ class ApiServices {
   try {
     final gbSaved = await http.get(Uri.parse('http://127.0.0.1:8000/get_size'));
     if (gbSaved.statusCode == 200)  {
-      
-      
-    }
-      
-    
+      final data = json.decode(gbSaved.body);
 
+      final temp_folder = data['temp_folder_size'].toString();
+      final windows_temp = data['windows_temp_size'].toString();
+      final windows_pretfetch = data['windows_prefecth_size'].toString();
+
+      return "\n✅Temp Folder: $temp_folder  \n✅Windows Temp: $windows_temp \n✅Windows Prefetch: $windows_pretfetch";
+      
+    } else {
+      debugPrint('Failed to fetch GB saved: ${gbSaved.statusCode}');
+      return 'Server not connected';
+    }
   } catch (e) {
     debugPrint('Error fetching GB saved: $e');
     return 'Error fetching GB saved';
