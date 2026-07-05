@@ -120,25 +120,25 @@ class ApiServices {
   }
  }
 
- static Future<String> getGbSaved() async {
+ static Future<String> getGbSavedOptimization() async {
   try {
     final gbSaved = await http.get(Uri.parse('http://127.0.0.1:8000/get_size'));
     if (gbSaved.statusCode == 200)  {
       final data = json.decode(gbSaved.body);
 
-      final temp_folder = data['temp_folder_size'].toString();
-      final windows_temp = data['windows_temp_size'].toString();
-      final windows_pretfetch = data['windows_prefecth_size'].toString();
+      final tempFolder = data['temp_folder_size'].toString();
+      final windowsTemp = data['windows_temp_size'].toString();
+      final windowsPretfetch = data['windows_prefecth_size'].toString();
 
-      return "\n✅Temp Folder: $temp_folder  \n✅Windows Temp: $windows_temp \n✅Windows Prefetch: $windows_pretfetch";
+      return "\n✅Temp Folder: $tempFolder  \n✅Windows Temp: $windowsTemp \n✅Windows Prefetch: $windowsPretfetch";
       
     } else {
-      debugPrint('Failed to fetch GB saved: ${gbSaved.statusCode}');
+      debugPrint('Failed to fetch GB saved optimization: ${gbSaved.statusCode}');
       return 'Server not connected';
     }
   } catch (e) {
-    debugPrint('Error fetching GB saved: $e');
-    return 'Error fetching GB saved';
+    debugPrint('Error fetching GB saved optimization: $e');
+    return 'Error fetching GB saved optimization';
   }
   }
  } 
