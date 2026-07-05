@@ -182,7 +182,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         color: Theme.of(context).cardColor
                     ),
                     child: Text(
-                     ' $textgbSaved',
+                     'You have saved: $textgbSaved',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   )
