@@ -25,7 +25,7 @@ def get_size(path): # This function calculates the total size of files in a give
 def show_gb(path): # This function converts the size from bytes to gigabytes and returns it. 
                 # Esta función convierte el tamaño de bytes a gigabytes y lo devuelve.
     bytes_size = get_size(path)
-    gb_size = bytes_size / (1024 ** 3)
+    gb_size = round(bytes_size / (1024 ** 3), 2) #We use round to limit the number of decimal places to 2.
     return gb_size
 
 folder_to_clean = [

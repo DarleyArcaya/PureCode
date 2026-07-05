@@ -128,9 +128,9 @@ class ApiServices {
 
       final tempFolder = data['temp_folder_size'].toString();
       final windowsTemp = data['windows_temp_size'].toString();
-      final windowsPretfetch = data['windows_prefecth_size'].toString();
+      final windowsPretfetch = data['windows_prefetch_size'].toString();
 
-      return "\n✅Temp Folder: $tempFolder  \n✅Windows Temp: $windowsTemp \n✅Windows Prefetch: $windowsPretfetch";
+      return "\n✅Temp Folder: $tempFolder GB  \n✅Windows Temp: $windowsTemp GB\n✅Windows Prefetch: $windowsPretfetch GB";
       
     } else {
       debugPrint('Failed to fetch GB saved optimization: ${gbSaved.statusCode}');
