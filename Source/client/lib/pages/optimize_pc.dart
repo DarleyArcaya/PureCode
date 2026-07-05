@@ -19,6 +19,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
   // Esta es la variable local que pintará el texto en la pantalla
   String textLastOptimizationTime = 'Not yet optimized';
 
+  String textgbSaved = '';
+
   Future<void> optimizePC() async {
     setState(() {
       _isLoading = true;
@@ -131,7 +133,13 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         await optimizePC(); // Call the optimization function
                         await ApiServices.optimizeSystem();
                          
-                        
+                        String gbSavedRequest = await ApiServices.getGbSavedOptimization();
+                        setState(() {
+                          textgbSaved = gbSavedRequest;
+                        });
+
+
+
                         String pythonRequest = await ApiServices.lastOptimization();
                         setState(() {
                           textLastOptimizationTime = pythonRequest;
@@ -173,8 +181,9 @@ class _MyWidgetState extends State<OptimizeWindow> {
                       borderRadius: BorderRadius.circular(10.0),
                         color: Theme.of(context).cardColor
                     ),
-                    child: const Text(
-                      'Gb you could saved', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    child: Text(
+                     ' $textgbSaved',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   )
                 )
