@@ -136,15 +136,15 @@ def return_get_size():
         "system_logs_size": 0.0
     }
 
-    if platform == "Windows":
-        data["temp_folder_size"] = show_gb.get_temp_folder_size()
-        data["windows_temp_size"] = show_gb.get_windows_temp_size()
-        data["windows_prefetch_size"] = show_gb.get_windows_prefetch_size()
+    if system == "Windows":
+        data["temp_folder_size"] = show_gb(os.environ.get('TEMP'))
+        data["windows_temp_size"] = show_gb(r"C:\Windows\Temp")
+        data["windows_prefetch_size"] = show_gb(r"C:\Windows\Prefetch")
     elif system == "Darwin":
-        data["library_caches_size"] = show_gb.get_library_caches_size()
-        data["library_logs_size"] = show_gb.get_library_logs_size()
-        data["system_caches_size"] = show_gb.get_system_caches_size()
-        data["system_logs_size"] = show_gb.get_system_logs_size()
+        data["library_caches_size"] = show_gb(os.path.expanduser('~/Library/Caches'))
+        data["library_logs_size"] = show_gb(os.path.expanduser('~/Library/Logs'))
+        data["system_caches_size"] = show_gb("/Library/Caches")
+        data["system_logs_size"] = show_gb("/Library/Logs")
 
     return data
 
