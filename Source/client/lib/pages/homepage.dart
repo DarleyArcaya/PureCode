@@ -41,7 +41,7 @@ class _HomepageState extends State<Homepage> {
           color: Color.fromARGB(255, 234, 235, 238),
           fontSize: 24,
           fontWeight: FontWeight.bold,
-
+          
           
         ),
         
@@ -114,6 +114,7 @@ class _HomepageState extends State<Homepage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("No updates avaliable"),
                             backgroundColor: Colors.blue,
+                            behavior: SnackBarBehavior.floating,
                             )
                           );
                         }
@@ -121,6 +122,7 @@ class _HomepageState extends State<Homepage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Error connecting to the server"),
                             backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
                             )
                           );
                         }
@@ -129,6 +131,7 @@ class _HomepageState extends State<Homepage> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Could not connect to the server"),
                       backgroundColor: Colors.red,
+                      behavior: SnackBarBehavior.floating,
                       ),
                     );
                   }
@@ -280,7 +283,8 @@ class _HomepageState extends State<Homepage> {
                         onTap: () async {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Your Mac is Optimized"),
-                            backgroundColor: Colors.blue
+                            backgroundColor: Colors.blue,
+                            behavior: SnackBarBehavior.floating,
                             )
                           );
                         },
@@ -423,6 +427,7 @@ class _HomepageState extends State<Homepage> {
                       const SnackBar(
                         content: Text('Please select at least one cache to clean.'),
                         backgroundColor: Colors.orange,
+                        behavior: SnackBarBehavior.floating,
                       )
                     );
                     return;
@@ -456,6 +461,7 @@ class _HomepageState extends State<Homepage> {
                       ? 'Selected caches cleaned successfully!'
                       : 'An error ocurred while cleaning caches. Please try again.'),
                       backgroundColor: success ? Colors.blue : Colors.red,
+                      behavior: SnackBarBehavior.floating,
                     )
                   );
                 },

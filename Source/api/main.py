@@ -120,7 +120,7 @@ def return_optimization_system():
 def return_last_optimization_date():
     result = get_time_optimization.last_optimization_date()
     return result
-        
+
     
 
 
