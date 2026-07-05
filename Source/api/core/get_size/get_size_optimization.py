@@ -1,12 +1,12 @@
 import os 
 import json
 import pathlib
-
+import platform
 
 # This is for creating the data.json in the same folder. 
 # Esto es para crear el archivo data.json en la misma carpeta.
 FILE = pathlib.Path(__file__).parent / 'data.json'  
-
+system = platform.system()
 
 def get_size(path): # This function calculates the total size of files in a given directory and its subdirectories.
                     # Esta función calcula el tamaño total de los archivos en un directorio dado y sus subdirectorios.
@@ -43,11 +43,22 @@ for folder in folder_to_clean:
         print(f"{folder}: Path does not exist or is empty.")
 
 
-data = {
-    "temp_folder_size": show_gb(os.environ.get('TEMP')),
-    "windows_temp_size": show_gb(r"C:\Windows\Temp"),
-    "windows_prefetch_size": show_gb(r"C:\Windows\Prefetch")
-}
+if system == 'Windows':
+
+    data = {
+        "temp_folder_size": show_gb(os.environ.get('TEMP')),
+        "windows_temp_size": show_gb(r"C:\Windows\Temp"),
+        "windows_prefetch_size": show_gb(r"C:\Windows\Prefetch")
+    }
+
+elif system == 'Darwin':
+    data = {
+        "library_caches_size": show_gb(os.path.expanduser('~/Library/Caches')),
+        "library_logs_size": show_gb(os.path.expanduser('~/Library/Logs')),
+        "system_caches_size": show_gb("/Library/Caches"),
+        "system_logs_size": show_gb("/Library/Logs")
+    }
+    
 with open(FILE, 'w') as f:
     json.dump(data, f, indent=4)
     print("Data written to data.json successfully.")

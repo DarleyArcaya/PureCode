@@ -131,9 +131,12 @@ def return_get_size():
     return {
         "temp_folder_size": temp_folder_size,
         "windows_temp_size": windows_temp_size,
-        "windows_prefetch_size": windows_prefetch_size
+        "windows_prefetch_size": windows_prefetch_size,
     }
 
+    
+
+    
 
 
 
