@@ -31,7 +31,7 @@ from fastapi import FastAPI
 from core.caches_to_delete import android_caches, flutter_caches, gradle_caches, pip_caches
 from core.optimosys import optimosys
 from core.get_time import get_time_optimization
-from core.get_size.get_size import show_gb
+from core.get_size.get_size_optimization import show_gb
 import uvicorn
 
 
