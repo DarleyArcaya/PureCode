@@ -59,12 +59,15 @@ class _HomepageState extends State<Homepage> {
                 color: Color(0xFF0F172A)
               ),
               child: 
-              Text("Settings",
+              Text(
+                "Settings",
+                
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30
               )
               ),
+              
               
             ),
             ListTile(
