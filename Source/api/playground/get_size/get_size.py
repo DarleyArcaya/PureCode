@@ -1,4 +1,8 @@
 import os 
+import json
+import pathlib
+
+FILE = pathlib.Path(__file__).parent / 'data.json'  # This is for creating the data.json in the same folder.
 
 def get_size(path):
     bytes_size = 0
@@ -32,3 +36,13 @@ for folder in folder_to_clean:
     else: 
         print(f"{folder}: Path does not exist or is empty.")
 print("\nCleaning...")
+
+with open(FILE, 'w') as f:
+    json.dump(
+        
+        {
+            
+        },
+        indent=4
+    )
+    print("Data written to data.json successfully.")
