@@ -31,6 +31,7 @@ from fastapi import FastAPI
 from core.caches_to_delete import android_caches, flutter_caches, gradle_caches, pip_caches
 from core.optimosys import optimosys
 from core.get_time import get_time_optimization
+from core.get_size.get_size import show_gb
 import uvicorn
 
 
@@ -121,8 +122,17 @@ def return_last_optimization_date():
     result = get_time_optimization.last_optimization_date()
     return result
 
-    
+@app.get('/get_size')
+def return_get_size():
+    temp_folder_size = show_gb(os.environ.get('TEMP'))
+    windows_temp_size = show_gb(r"C:\Windows\Temp")
+    windows_prefetch_size = show_gb(r"C:\Windows\Prefetch")
 
+    return {
+        "temp_folder_size": temp_folder_size,
+        "windows_temp_size": windows_temp_size,
+        "windows_prefetch_size": windows_prefetch_size
+    }
 
 
 
