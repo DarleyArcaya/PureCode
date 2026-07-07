@@ -130,6 +130,35 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         )
                       ),
                       onPressed: () async {
+                        showDialog(
+                          context: context,
+                          
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Optimization Process', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                              content: Text('What will be optimize will appear here.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).pop,
+                                  child: const Text('Do not Optimize', style: TextStyle(color: Colors.red),)
+                                  
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                    foregroundColor: Colors.white
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+
+                                  },
+                                  child: const Text('Optimize')
+                                )
+                              ],
+                            );
+                          }
+                        );
+
                         await optimizePC(); // Call the optimization function
                         await ApiServices.optimizeSystem();
                          
