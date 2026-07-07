@@ -139,18 +139,22 @@ class _MyWidgetState extends State<OptimizeWindow> {
                               content: Text('What will be optimize will appear here.'),
                               actions: [
                                 TextButton(
-                                  onPressed: () => Navigator.of(context).pop,
-                                  child: const Text('Do not Optimize', style: TextStyle(color: Colors.red),)
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+
                                   
+                                  },
+                                  child: const Text('Cancel')
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.blue,
                                     foregroundColor: Colors.white
                                   ),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     Navigator.of(context).pop();
-
+                                    await optimizePC();
+                                    await ApiServices.optimizeSystem();
                                   },
                                   child: const Text('Optimize')
                                 )
@@ -159,9 +163,6 @@ class _MyWidgetState extends State<OptimizeWindow> {
                           }
                         );
 
-                        await optimizePC(); // Call the optimization function
-                        await ApiServices.optimizeSystem();
-                         
                         String gbSavedRequest = await ApiServices.getGbSavedOptimization();
                         setState(() {
                           textgbSaved = gbSavedRequest;
