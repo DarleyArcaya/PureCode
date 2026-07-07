@@ -144,7 +144,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
 
                                   
                                   },
-                                  child: const Text('Cancel')
+                                  child: const Text('Cancel', style: TextStyle(color: Colors.redAccent))
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
