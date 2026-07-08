@@ -2,10 +2,17 @@ import os
 import json
 import pathlib
 import platform
+import sys
 
-# This is for creating the data.json in the same folder. 
-# Esto es para crear el archivo data.json en la misma carpeta.
-FILE = pathlib.Path(__file__).parent / 'data.json'  
+
+if getattr(sys, 'frozen', False):
+    BASE_DIR = pathlib.Path(sys.executable).parent # This is for create the .json when backend is .exe
+else:
+    BASE_DIR = pathlib.Path(__file__).parent  # This is for create in the same folder when we are working on backend.
+
+
+FILE = BASE_DIR / 'data.json' # This is the file that will be created.
+
 system = platform.system()
 
 def get_size(path): # This function calculates the total size of files in a given directory and its subdirectories.
