@@ -148,8 +148,6 @@ def return_get_size():
 
     return data
 
-
-
 # Define a custom logging configuration to disable uvicorn's default logging
 # We created an empty log configuration to trick Uvicorn
 # definimos una configuración de logging personalizada para desactivar el logging predeterminado de uvicorn

@@ -19,7 +19,8 @@ class _MyWidgetState extends State<OptimizeWindow> {
   // Esta es la variable local que pintará el texto en la pantalla
   String textLastOptimizationTime = 'Not yet optimized';
 
-  String textgbSaved = '';
+  String textPreview = ''; // This Variable is for get what will be optimize before optimize the system.
+  String textgbSaved = ''; // This Variable shows what was optimized once the optimization processs is completed.
 
   Future<void> optimizePC() async {
     setState(() {
@@ -129,14 +130,24 @@ class _MyWidgetState extends State<OptimizeWindow> {
                           borderRadius: BorderRadius.circular(10.0)
                         )
                       ),
+
                       onPressed: () async {
+                        
+
+                        String gbPreviewRequest = await ApiServices.getGbSavedOptimization();
+                        
+                        setState(() {
+                          textPreview = gbPreviewRequest;
+                        });
+                        
+                        if (!context.mounted) return;
                         showDialog(
                           context: context,
                           
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: const Text('Optimization Process', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                              content: Text('You may save: ', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                              content: Text('You may save: $textPreview', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -155,6 +166,10 @@ class _MyWidgetState extends State<OptimizeWindow> {
                                     Navigator.of(context).pop();
                                     await optimizePC();
                                     await ApiServices.optimizeSystem();
+                                    String gbSavedRequest = await ApiServices.getGbSavedOptimization();
+                                    setState(() {
+                                      textgbSaved = gbSavedRequest;
+                                    });
                                   },
                                   child: const Text('Optimize')
                                 )
@@ -163,12 +178,6 @@ class _MyWidgetState extends State<OptimizeWindow> {
                           }
                         );
 
-                        String gbSavedRequest = await ApiServices.getGbSavedOptimization();
-                        setState(() {
-                          textgbSaved = gbSavedRequest;
-                        });
-
-
 
                         String pythonRequest = await ApiServices.lastOptimization();
                         setState(() {
@@ -176,7 +185,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                         });
                         
                       },
-                      child: const Text('Optimize', style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold)),
+                      child: const Text('Optimize your System', style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),

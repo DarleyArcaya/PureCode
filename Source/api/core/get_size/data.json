@@ -1,6 +1,12 @@
 {
+<<<<<<< HEAD
     "library_caches_size": 0.19,
     "library_logs_size": 0.0,
     "system_caches_size": 0.01,
     "system_logs_size": 0.0
+=======
+    "temp_folder_size": 0.07,
+    "windows_temp_size": 0.0,
+    "windows_prefetch_size": 0.0
+>>>>>>> 65f10a8b11e1fc73a77538d66ac27d991b97a109
 }
