@@ -136,10 +136,9 @@ class ApiServices {
       final systemLogs = data['system_logs_size'].toString();
 
       if (Platform.isWindows) {
-        return "\n✅Temp Folder: $tempFolder GB  \n✅Windows Temp: $windowsTemp GB\n✅Windows Prefetch: $windowsPretfetch GB";
-
+        return "\n✅Temp Folder: $tempFolder GB\n✅Windows Temp: $windowsTemp GB\n✅Windows Prefetch: $windowsPretfetch GB";
       } else if (Platform.isMacOS) {
-        return "\n✅Library Caches: $libraryCaches GB  \n✅Library Logs: $libraryLogsCaches GB\n✅System Caches: $systemCaches GB\n✅System Logs: $systemLogs GB";
+        return "\n✅Library Caches: $libraryCaches GB\n✅Library Logs: $libraryLogsCaches GB\n✅System Caches: $systemCaches GB\n✅System Logs: $systemLogs GB";
       } else {
         return 'Unsupported platform';
       }

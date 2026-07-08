@@ -71,7 +71,6 @@ def optimization_system():
 if __name__ == "__main__":
 
     ensure_admin()
-    clear_folder()
     optimization_system()
     
 
