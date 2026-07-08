@@ -18,3 +18,15 @@ build/
 # macOS
 **/.DS_Store
 .DS_Store
+
+# PyInstaller build output
+Source/api/build/
+Source/api/dist/
+Source/api/*.spec
+
+# Backend compilado dentro de assets (no debe ir al repo)
+Source/client/assets/backend/
+
+# Python
+__pycache__/
+*.pyc

@@ -188,7 +188,7 @@ if __name__ == "__main__":
     # 3 Super Compilacion forzazda (si la anterior no funciona):
     # pyinstaller --onedir --noconsole --collect-all pydantic_core --collect-all pydantic --collect-all fastapi main.py
     # 4: Este es el comando definitivo
-    # pyinstaller --onefile --noconsole --collect-all pydantic_core --collect-all pydantic --collect-all fastapi main.py
-
-    # New command 
     # pyinstaller --onefile --noconsole --uac-admin --collect-all pydantic_core --collect-all pydantic --collect-all fastapi main.py
+
+    # New command for Macos
+    # pyinstaller --onedir --windowed --collect-all pydantic_core --collect-all pydantic --collect-all fastapi main.py

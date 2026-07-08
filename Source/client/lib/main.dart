@@ -83,55 +83,52 @@ void main() async {  // 'async' allows us to use 'await' inside this function
 // Function to start the backend process invisibly
 
 
+// Function to start the backend process invisibly
 Future<void> runBackend() async {
   try {
-    String backendPath = '';
-    
-    // 1. Detectamos el sistema operativo para armar la ruta correcta del binario
+    String backendPath;
+    String workingDir;
+
     if (Platform.isWindows) {
       backendPath = '${Directory.current.path}/data/flutter_assets/assets/backend/main.exe';
       if (!await File(backendPath).exists()) {
         backendPath = '${Directory.current.path}/assets/backend/main.exe';
       }
-    } else if (Platform.isMacOS) {
-      // En macOS compilado en producción, la ruta de los assets cambia un poco
-      backendPath = '${Directory.current.path}/../Resources/flutter_assets/assets/backend/main';
-      if (!await File(backendPath).exists()) {
-        backendPath = '${Directory.current.path}/assets/backend/main';
-      }
-      
-      // CRUCIAL EN MAC: Asegurarnos de que el archivo tenga permisos de ejecución
-      // Si Flutter lo mueve como un asset genérico, podría perder el permiso de ejecución nativo.
-      await Process.run('chmod', ['+x', backendPath]);
-    }
+      workingDir = File(backendPath).parent.path;
 
-    debugPrint('Running backend from: $backendPath');
-    String workingDir = File(backendPath).parent.path;
-
-    // 2. Ejecutamos el proceso según el sistema operativo
-    if (Platform.isWindows) {
-      // código invisible de Windows con PowerShell
+      debugPrint('Running backend hidden from: $backendPath');
       backendProcess = await Process.start(
-        'powershell', 
+        'powershell',
         [
-          '-Command', 
-          'Start-Process', 
-          '"$backendPath"', 
-          '-WindowStyle', 'Hidden', 
+          '-Command', 'Start-Process',
+          '"$backendPath"',
+          '-WindowStyle', 'Hidden',
           '-WorkingDirectory', '"$workingDir"'
         ],
         runInShell: true,
       );
     } else if (Platform.isMacOS) {
-      // En macOS es directo: al no llamar a "Terminal", corre invisible de fondo de forma nativa
+      // En Mac el binario no lleva extensión, y va dentro del .app bundle
+      backendPath = '${Directory.current.path}/../Resources/flutter_assets/assets/backend/main';
+      if (!await File(backendPath).exists()) {
+        backendPath = '${Directory.current.path}/assets/backend/main';
+      }
+      workingDir = File(backendPath).parent.path;
+
+      // Aseguramos que el binario tenga permiso de ejecución (chmod +x)
+      await Process.run('chmod', ['+x', backendPath]);
+
+      debugPrint('Running backend from: $backendPath');
       backendProcess = await Process.start(
         backendPath,
         [],
         workingDirectory: workingDir,
       );
+    } else {
+      debugPrint('Plataforma no soportada para lanzar el backend automáticamente.');
     }
 
-    debugPrint('Backend process started successfully');
+    debugPrint('Backend process started in background');
   } catch (e) {
     debugPrint('Error occurred while starting backend: $e');
   }
