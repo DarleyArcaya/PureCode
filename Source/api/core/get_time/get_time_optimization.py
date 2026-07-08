@@ -9,7 +9,7 @@ if getattr(sys, 'frozen', False):
 else:
     BASE_DIR = pathlib.Path(__file__).parent
 
-FILE = BASE_DIR / 'data.json'
+FILE = BASE_DIR / 'data_time.json'
 
 def last_optimization_date():
 
