@@ -5,28 +5,65 @@ import ctypes, sys, os, shutil, platform
 
 def is_admin():
     try:
-        return bool(ctypes.windll.shell32.IsUserAnAdmin())
+        system = platform.system()
+        if system == 'Windows':
+            return bool(ctypes.windll.shell32.IsUserAnAdmin())
+        elif system == 'Darwin':
+            return os.geteuid() == 0
+        return False
     except:
+        return False
+
+# Function to relaunch the current process requesting elevated privileges.
+# En Windows dispara el UAC (ventana "¿Permitir que esta app haga cambios?").
+# En Mac dispara el diálogo nativo de "Introduce tu contraseña", vía osascript,
+# porque una app GUI no tiene una terminal donde 'sudo' pueda pedir la contraseña por teclado.
+# Funcion que relanza el proceso actual pidiendo permisos elevados.
+def relaunch_as_admin():
+    system = platform.system()
+    try:
+        if system == 'Windows':
+            executable = sys.executable
+            params = " ".join(f'"{arg}"' for arg in sys.argv)
+            result = ctypes.windll.shell32.ShellExecuteW(
+                None, "runas", executable, params, None, 1
+            )
+            return result > 32  # ShellExecuteW devuelve >32 si tuvo éxito
+
+        elif system == 'Darwin':
+            # sys.executable ya apunta al binario correcto tanto en desarrollo (python3)
+            # como compilado con PyInstaller (el propio .app)
+            executable = sys.executable
+            args = " ".join(f'"{arg}"' for arg in sys.argv[1:])
+            command = f'"{executable}" {args}'.strip()
+
+            # osascript muestra el diálogo nativo de macOS pidiendo la contraseña de admin
+            apple_script = f'do shell script "{command}" with administrator privileges'
+            result = os.system(f"osascript -e '{apple_script}'")
+            return result == 0
+
+        return False
+    except Exception as e:
+        print(f"No se pudo solicitar elevación: {e}")
         return False
 
 # Function to ensure the current process is running with administrative privileges on Windows
 # Funcion para asegurarse que el actual proceso corre con permisos de administrador en Windows
 def ensure_admin():
     system = platform.system()
-    
-    if system == 'Windows':
+
+    if system in ('Windows', 'Darwin'):
         if not is_admin():
-            print("ERROR: Run VS Code as administrator.")
-            sys.exit()
+            print(f"No se detectaron permisos de administrador en {system}. Solicitando elevación...")
+            success = relaunch_as_admin()
+            if success:
+                # La nueva instancia elevada ya se está abriendo; cerramos esta sin permisos.
+                sys.exit(0)
+            else:
+                print("El usuario canceló la elevación o falló. Continuando sin permisos de administrador.")
+                # Seguimos corriendo: algunas carpetas de sistema simplemente se saltarán al limpiar.
         else:
-            print("Running as admin.")
-    
-    elif system == 'Darwin':
-        if os.geteuid() != 0:  # This is for get admin permisson on MacOS
-            print("ERROR: Run with sudo on Mac.")
-            sys.exit()
-        else:
-            print("Runb ning as admin.")
+            print(f"Running as admin on {system}.")
 
 # Function to clear a folder by removing all its contents
 # Function para limpiar una carpeta para remover todo su contenido
@@ -69,8 +106,5 @@ def optimization_system():
         clear_folder(path)
 
 if __name__ == "__main__":
-
     ensure_admin()
     optimization_system()
-    
-

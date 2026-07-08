@@ -84,19 +84,23 @@ void main() async {  // 'async' allows us to use 'await' inside this function
 
 
 // Function to start the backend process invisibly
-Future<void> runBackend() async {
+// Function to start the backend process
+Future <void> runBackend() async {
   try {
-    String backendPath;
-    String workingDir;
-
     if (Platform.isWindows) {
-      backendPath = '${Directory.current.path}/data/flutter_assets/assets/backend/main.exe';
+      // Get the path to the main.exe file
+      String backendPath = '${Directory.current.path}/data/flutter_assets/assets/backend/main.exe';
+
+      // Check if the file exists at the expected location, if not, try the alternative path
       if (!await File(backendPath).exists()) {
         backendPath = '${Directory.current.path}/assets/backend/main.exe';
       }
-      workingDir = File(backendPath).parent.path;
 
+      String workingDir = File(backendPath).parent.path;
       debugPrint('Running backend hidden from: $backendPath');
+
+      // Ejecutamos a través de PowerShell con -WindowStyle Hidden
+      // para que nunca se muestre la consola negra de fondo
       backendProcess = await Process.start(
         'powershell',
         [
@@ -107,28 +111,40 @@ Future<void> runBackend() async {
         ],
         runInShell: true,
       );
-    } else if (Platform.isMacOS) {
-      // En Mac el binario no lleva extensión, y va dentro del .app bundle
-      backendPath = '${Directory.current.path}/../Resources/flutter_assets/assets/backend/main';
-      if (!await File(backendPath).exists()) {
-        backendPath = '${Directory.current.path}/assets/backend/main';
-      }
-      workingDir = File(backendPath).parent.path;
 
-      // Aseguramos que el binario tenga permiso de ejecución (chmod +x)
+    } else if (Platform.isMacOS) {
+      // IMPORTANTE: en macOS, Directory.current.path puede apuntar al contenedor
+      // sandbox de la app (Library/Containers/.../Data) en vez del bundle real,
+      // especialmente en modo debug. Platform.resolvedExecutable sí es confiable:
+      // siempre apunta a .../MiApp.app/Contents/MacOS/ejecutable
+      String contentsPath = File(Platform.resolvedExecutable).parent.parent.path; // .../MiApp.app/Contents
+
+      String backendPath = '$contentsPath/Resources/flutter_assets/assets/backend/main';
+
+      if (!await File(backendPath).exists()) {
+        // Fallback por si el asset se empaqueta en una subcarpeta distinta
+        backendPath = '$contentsPath/Frameworks/assets/backend/main';
+      }
+
+      // Nos aseguramos de que el binario tenga permiso de ejecución
       await Process.run('chmod', ['+x', backendPath]);
 
       debugPrint('Running backend from: $backendPath');
+
+      // El propio binario Python ya se encarga de pedir sudo (vía osascript) a través
+      // de ensure_admin(), así que aquí solo lo lanzamos normal, sin necesidad de PowerShell.
       backendProcess = await Process.start(
         backendPath,
         [],
-        workingDirectory: workingDir,
+        workingDirectory: File(backendPath).parent.path,
       );
+
     } else {
       debugPrint('Plataforma no soportada para lanzar el backend automáticamente.');
+      return;
     }
 
-    debugPrint('Backend process started in background');
+    debugPrint('Backend process started');
   } catch (e) {
     debugPrint('Error occurred while starting backend: $e');
   }
