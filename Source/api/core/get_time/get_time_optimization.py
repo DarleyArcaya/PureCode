@@ -2,11 +2,16 @@ import time
 from datetime import datetime
 import json
 import pathlib
+import sys
 
+if getattr(sys, 'frozen', False):
+    BASE_DIR = pathlib.Path(sys.executable).parent
+else:
+    BASE_DIR = pathlib.Path(__file__).parent
+
+FILE = BASE_DIR / 'data_time.json'
 
 def last_optimization_date():
-
-    FILE = pathlib.Path(__file__).parent / 'data.json'
 
     now = time.time()
     datatime = datetime.fromtimestamp(now)

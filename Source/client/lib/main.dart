@@ -79,27 +79,63 @@ void main() async {  // 'async' allows us to use 'await' inside this function
 }
 
 // Function to start the backend process
-Future <void> runBackend() async {
+// Function to start the backend process
+// Function to start the backend process invisibly
+
+
+Future<void> runBackend() async {
   try {
-    // Get the path to the main.exe file
-    String backendPath = '${Directory.current.path}/data/flutter_assets/assets/backend/main.exe';
-
-    // Check if the file exists at the expected location, if not, try the alternative path
-    if (!await File(backendPath).exists()) {
-      backendPath = '${Directory.current.path}/assets/backend/main.exe';
-
+    String backendPath = '';
+    
+    // 1. Detectamos el sistema operativo para armar la ruta correcta del binario
+    if (Platform.isWindows) {
+      backendPath = '${Directory.current.path}/data/flutter_assets/assets/backend/main.exe';
+      if (!await File(backendPath).exists()) {
+        backendPath = '${Directory.current.path}/assets/backend/main.exe';
+      }
+    } else if (Platform.isMacOS) {
+      // En macOS compilado en producción, la ruta de los assets cambia un poco
+      backendPath = '${Directory.current.path}/../Resources/flutter_assets/assets/backend/main';
+      if (!await File(backendPath).exists()) {
+        backendPath = '${Directory.current.path}/assets/backend/main';
+      }
+      
+      // CRUCIAL EN MAC: Asegurarnos de que el archivo tenga permisos de ejecución
+      // Si Flutter lo mueve como un asset genérico, podría perder el permiso de ejecución nativo.
+      await Process.run('chmod', ['+x', backendPath]);
     }
-    // We use DebugPrint instead of print to avoid issues with stdout buffering in Flutter
-    // But thy are essentially the same for debugging purposes (Print and DebugPrint)
-    debugPrint('Running backend from: $backendPath');
 
-    backendProcess = await Process.start(backendPath, []);
-    debugPrint('Backend process started');
+    debugPrint('Running backend from: $backendPath');
+    String workingDir = File(backendPath).parent.path;
+
+    // 2. Ejecutamos el proceso según el sistema operativo
+    if (Platform.isWindows) {
+      // código invisible de Windows con PowerShell
+      backendProcess = await Process.start(
+        'powershell', 
+        [
+          '-Command', 
+          'Start-Process', 
+          '"$backendPath"', 
+          '-WindowStyle', 'Hidden', 
+          '-WorkingDirectory', '"$workingDir"'
+        ],
+        runInShell: true,
+      );
+    } else if (Platform.isMacOS) {
+      // En macOS es directo: al no llamar a "Terminal", corre invisible de fondo de forma nativa
+      backendProcess = await Process.start(
+        backendPath,
+        [],
+        workingDirectory: workingDir,
+      );
+    }
+
+    debugPrint('Backend process started successfully');
   } catch (e) {
     debugPrint('Error occurred while starting backend: $e');
   }
 }
-
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
