@@ -136,7 +136,7 @@ class _MyWidgetState extends State<OptimizeWindow> {
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: const Text('Optimization Process', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                              content: Text('You may save: ', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                              content: Text('You may save: $textgbSaved', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                               actions: [
                                 TextButton(
                                   onPressed: () {
