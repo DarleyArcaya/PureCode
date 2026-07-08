@@ -110,7 +110,7 @@ Future<void> runBackend() async {
 
     // 2. Ejecutamos el proceso según el sistema operativo
     if (Platform.isWindows) {
-      // Tu código invisible de Windows con PowerShell
+      // código invisible de Windows con PowerShell
       backendProcess = await Process.start(
         'powershell', 
         [
