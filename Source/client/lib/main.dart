@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart'; // Esto es para alm
 Process? backendProcess; // Variable global para almacenar el proceso del backend
 
 
+
 void main() async {  // 'async' allows us to use 'await' inside this function
   WidgetsFlutterBinding.ensureInitialized(); // macOs need this here for work....
   // Parte de la logica que usamos para guardar el tema oscuro o blanco en el disco y no en la memoria
