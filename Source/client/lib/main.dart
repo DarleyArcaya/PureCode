@@ -86,6 +86,7 @@ void main() async {  // 'async' allows us to use 'await' inside this function
 
 // Function to start the backend process invisibly
 // Function to start the backend process
+// Function to start the backend process
 Future <void> runBackend() async {
   try {
     if (Platform.isWindows) {
@@ -120,11 +121,15 @@ Future <void> runBackend() async {
       // siempre apunta a .../MiApp.app/Contents/MacOS/ejecutable
       String contentsPath = File(Platform.resolvedExecutable).parent.parent.path; // .../MiApp.app/Contents
 
-      String backendPath = '$contentsPath/Resources/flutter_assets/assets/backend/main';
+      // Ruta real confirmada: Flutter empaqueta los assets dentro de App.framework,
+      // no directo en Contents/Resources. Usamos 'Current' (symlink que Xcode mantiene
+      // apuntando siempre a la versión activa, sea 'A' u otra) para no depender de un
+      // nombre de versión fijo.
+      String backendPath = '$contentsPath/Frameworks/App.framework/Versions/Current/Resources/flutter_assets/assets/backend/main';
 
       if (!await File(backendPath).exists()) {
-        // Fallback por si el asset se empaqueta en una subcarpeta distinta
-        backendPath = '$contentsPath/Frameworks/assets/backend/main';
+        // Fallback explícito a la versión 'A', por si el symlink 'Current' no resuelve
+        backendPath = '$contentsPath/Frameworks/App.framework/Versions/A/Resources/flutter_assets/assets/backend/main';
       }
 
       // Nos aseguramos de que el binario tenga permiso de ejecución

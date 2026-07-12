@@ -1,6 +1,5 @@
 {
-    "library_caches_size": 0.02,
-    "library_logs_size": 0.0,
-    "system_caches_size": 0.0,
-    "system_logs_size": 0.0
+    "temp_folder_size": 0.15,
+    "windows_temp_size": 0.0,
+    "windows_prefetch_size": 0.0
 }
