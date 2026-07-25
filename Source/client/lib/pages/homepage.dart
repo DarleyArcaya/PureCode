@@ -152,11 +152,12 @@ class _HomepageState extends State<Homepage> {
                       
                       children: [
                         Text("Version: 0.9.0", style: TextStyle(
-                         fontSize: 20, fontWeight: FontWeight.bold), 
+                         fontSize: 30, fontWeight: FontWeight.bold), 
                          textAlign: TextAlign.center
                          ),
                         // we will use \n for move down the line // usaremos \n para moverse a la siguiente línea (o sea para abajo)//
-
+                        Text("What's New? \n", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                        Text("Here will be writteng news things")
                       ],
                     )
                   ),
@@ -309,7 +310,7 @@ class _HomepageState extends State<Homepage> {
                   
                   Expanded(
         
-                    child: Text('Welcome', style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 148, 84, 1))),
+                    child: Text('Welcome', style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Color(0xFF2196F3))),
                   
                   
                   ),
