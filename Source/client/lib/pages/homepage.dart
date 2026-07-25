@@ -275,7 +275,7 @@ class _HomepageState extends State<Homepage> {
                       InkWell( // This Widgets allows us to detect taps on the image, making it interactive and capable to delete MAC CACHES
                         onTap: () async {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Your Mac is Optimized"),
+                            SnackBar(content: Text("Welcome to PureCode, your optimization developer app"),
                             backgroundColor: Colors.blue,
                             behavior: SnackBarBehavior.floating,
                             )
@@ -307,7 +307,12 @@ class _HomepageState extends State<Homepage> {
                     
                 const SizedBox(width: 10), // Espacio entre las dos imágenes // Space between the two images
                   
-                  Expanded(child: Text('You can save' '\nGBs HERE', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+                  Expanded(
+        
+                    child: Text('Welcome', style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 148, 84, 1))),
+                  
+                  
+                  ),
 
                 
                   ],
