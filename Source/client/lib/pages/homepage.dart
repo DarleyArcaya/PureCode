@@ -82,7 +82,7 @@ class _HomepageState extends State<Homepage> {
                     return AlertDialog(
                       title: Text('About PureCode', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
 
-                      content: Text("PureCode is a tool designed to optimize the workflow of developers and advanced users by simplifying system maintenance. With a single click, it allows you to debug workstations by deleting unnecessary temporary files and caches. Its most notable feature is the ability to manage and reduce 'System Data' files on macOS, freeing up storage space quickly and safely. \n\n\n\n\n\n\n Copyright © 2026 by Darley Silot Arcaya"
+                      content: Text("PureCode is a lightweight desktop tool that helps developers reclaim disk space by cleaning up common development caches — Gradle, Android SDK, Flutter/pub, and pip — along with general system temp files. It runs a quick scan before cleaning so you always see what will be freed. \n\n Version: beta (v0.9.0).\n\n\n\n\n\n\n Copyright © 2026 by Darley Silot Arcaya"
                       , style: TextStyle(fontSize: 20, )),
                     
                     );
