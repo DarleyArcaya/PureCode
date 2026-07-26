@@ -138,44 +138,6 @@ class _HomepageState extends State<Homepage> {
                 }
           
             ),
-            ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text("What is new and fixed", style: TextStyle(fontWeight: FontWeight.bold)),
-              subtitle: Text("Check the changelog for more information"),
-
-              onTap: () {
-                Navigator.of(context).pop();
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) => Center(
-                    child: ListView(
-                      
-                      children: [
-                        Text("Version: 0.9.0", style: TextStyle(
-                         fontSize: 30, fontWeight: FontWeight.bold), 
-                         textAlign: TextAlign.center
-                         ),
-                        // we will use \n for move down the line // usaremos \n para moverse a la siguiente línea (o sea para abajo)//
-                        Text("What's New? \n", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                        Text("Here will be writteng news things")
-                      ],
-                    )
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10),
-                      topLeft: Radius.circular(10),
-                      bottomLeft: Radius.circular(1),
-                      bottomRight: Radius.circular(1)
-                    ),
-                  ),
-                  backgroundColor: Theme.of(context).cardColor,
-                  elevation: 200,
-                  isScrollControlled: true,
-
-                );
-              },
-            ),
           
           ValueListenableBuilder(
             valueListenable: isDarkMode,
