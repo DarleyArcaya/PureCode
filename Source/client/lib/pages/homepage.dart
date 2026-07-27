@@ -82,7 +82,7 @@ class _HomepageState extends State<Homepage> {
                     return AlertDialog(
                       title: Text('About PureCode', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
 
-                      content: Text("PureCode is a lightweight desktop tool that helps developers reclaim disk space by cleaning up common development caches — Gradle, Android SDK, Flutter/pub, and pip — along with general system temp files. It runs a quick scan before cleaning so you always see what will be freed. \n\n Version: beta (v0.9.0).\n\n\n\n\n\n\n Copyright © 2026 by Darley Silot Arcaya"
+                      content: Text("PureCode is a lightweight desktop tool that helps developers reclaim disk space by cleaning up common development caches — Gradle, Android SDK, Flutter/pub, and pip — along with general system temp files. It runs a quick scan before cleaning so you always see what will be freed. \n\n Version: beta (v0.10.0).\n\n\n\n\n\n\n Copyright © 2026 by Darley Silot Arcaya"
                       , style: TextStyle(fontSize: 20, )),
                     
                     );
