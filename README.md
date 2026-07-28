@@ -19,7 +19,7 @@ You can now try **PureCode** without needing to set up development environments!
 
 | Platform | Status | Download Link |
 | :--- | :--- | :--- |
-| **Windows** | ✅ Stable Beta | [**Download**](https://github.com/DarleyArcaya/PureCode/releases/download/v0.5.0-beta/PureCode_V_0.5.0_Setup.exe) |
+| **Windows** | ✅ Stable Beta | [**Download**](https://github.com/DarleyArcaya/PureCode/releases/download/v0.9.0-beta/PureCode_V_0.9.0_Setup.exe) |
 | **macOS** | 🏗️ In Progress | *Coming soon* |
 
 ---
