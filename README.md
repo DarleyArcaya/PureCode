@@ -78,19 +78,29 @@ Unlike generic system cleaners, **PureCode** is built by developers, for develop
 
 ```text
 PureCode/
-├── Source/
-│   ├── api/                 # Backend (FastAPI Core)
-│   │   ├── core/            # Specialized cleaning modules (.py)
-│   │   ├── tests/           # Unit tests & validation scripts
-│   │   └── main.py          # API gateway & Endpoints
-│   └── client/              # Frontend (Flutter Cross-Platform)
-│       ├── lib/             # Main Dart source code
-│       ├── windows/         # Windows native build files
-│       ├── macos/           # macOS native build files
-│       └── pubspec.yaml     # Client dependencies & assets
-├── screenshots/             # UI Visual Assets
-├── .gitignore               # Root ignore settings
-└── README.md                # Documentation
+├── api/                    # Backend (FastAPI Core)
+│   ├── core/               # Specialized cleaning modules
+│   ├── playground/         # Sandbox for testing new modules
+│   ├── tests/              # Unit tests & validation
+│   ├── updates/            # Version update logic
+│   ├── __pycache__/        # Compiled Python files
+│   ├── conftest.py         # Pytest configuration
+│   ├── info.txt            # Project info notes
+│   └── main.py             # API gateway & Endpoints
+├── client/                 # Frontend (Flutter Cross-Platform)
+│   ├── assets/             # Images, fonts, backend binary
+│   ├── android/            # Android build files
+│   ├── ios/                # iOS build files
+│   ├── linux/              # Linux build files
+│   ├── macos/              # macOS build files
+│   ├── web/                # Web build files
+│   ├── windows/            # Windows build files
+│   ├── lib/                # Main Dart source code
+│   ├── .dart_tool/         # Dart tooling folder
+│   └── pubspec.yaml        # Client dependencies
+├── screenshots/            # UI Visual Assets
+├── .gitignore              # Root ignore settings
+└── README.md               # Documentation
 ```
 
 ## Run Backend Server
