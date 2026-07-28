@@ -26,10 +26,22 @@ You can now try **PureCode** without needing to set up development environments!
 
 ## 🔍 Preview
 
-<p align="center">
-  <img src="screenshots/purecode.png" alt="PureCode Interface Preview" width="680" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
-</p>
 
+<p align="center">
+  <table align="center" style="border: none;">
+    <tr>
+      <td align="center" style="padding: 8px; border: none;">
+        <img src="screenshots/purecodemenu.png" alt="PureCode Menu" width="500" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      </td>
+      <td align="center" style="padding: 8px; border: none;">
+        <img src="screenshots/purecodeoptimizationsys.png" alt="PureCode Optimization" width="500" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      </td>
+      <td align="center" style="padding: 8px; border: none;">
+        <img src="screenshots/purecodesettings.png" alt="PureCode Settings" width="500" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+      </td>
+    </tr>
+  </table>
+</p>
 ---
 
 ## 💡 Why PureCode?
